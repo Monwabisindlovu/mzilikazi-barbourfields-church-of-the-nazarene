@@ -1,29 +1,136 @@
-/* Navbar.module.css */
-.navbar {
-    background-color: #cfd1d4;
-    padding: 10px;
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #282c34;
+  padding: 10px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+nav ul li a:hover {
+  background-color: #61dafb;
+  border-radius: 4px;
+}
+
+h2 {
+  color: #144dbf;
+  margin-top: 20px;
+}
+
+.section {
+  background: linear-gradient(135deg, #4a90e2, #50d2c2);
+  color: rgb(241, 230, 9);
+  padding: 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 1.2em;
+  max-width: 600px;
+  text-align: center;
+}
+
+.gold-text {
+  color: gold;
+}
+
+.App-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Media Queries for responsiveness */
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  .App-title {
+    font-size: 1.5em;
   }
-  
-  .navbar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
+
+  nav ul {
+    flex-direction: column;
   }
-  
-  .navbar li {
-    display: inline;
+
+  nav ul li {
+    display: block;
+    margin: 5px 0;
   }
-  
-  .navbar a {
-    color: rgb(48, 202, 202);
-    text-decoration: none;
-    padding: 10px;
+
+  .section {
+    padding: 20px;
   }
-  
-  .navbar a:hover {
-    background-color: #61dafb;
-    border-radius: 4px;
+
+  .section h2 {
+    font-size: 1.8em;
   }
-  
+
+  .section p {
+    font-size: 1em;
+    max-width: 100%;
+  }
+
+  .App-logo {
+    width: 80px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  .App-title {
+    font-size: 1.8em;
+  }
+
+  .section {
+    padding: 30px;
+  }
+
+  .section h2 {
+    font-size: 2.2em;
+  }
+
+  .section p {
+    font-size: 1.1em;
+    max-width: 90%;
+  }
+
+  .App-logo {
+    width: 90px;
+  }
+}

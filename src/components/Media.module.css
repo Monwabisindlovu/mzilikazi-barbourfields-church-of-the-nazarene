@@ -1,3 +1,4 @@
+/* Base Styles */
 .container {
   padding: 20px;
 }
@@ -84,4 +85,63 @@
   border: none;
   padding: 10px;
   cursor: pointer;
+}
+
+/* Media Queries for responsiveness */
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  .linkItem {
+    width: 100px;
+    height: 100px;
+  }
+
+  .modal {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  .closeButton {
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  .linkItem {
+    width: 120px;
+    height: 120px;
+  }
+
+  .modal {
+    width: 85%;
+    max-width: 85%;
+  }
+
+  .closeButton {
+    top: 8px;
+    right: 8px;
+    padding: 8px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 901px) {
+  .linkItem {
+    width: 150px;
+    height: 150px;
+  }
+
+  .modal {
+    width: 80%;
+    max-width: 800px;
+  }
+
+  .closeButton {
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+  }
 }

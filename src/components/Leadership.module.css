@@ -1,11 +1,12 @@
 /* Leadership.module.css */
 
+/* Base Styles */
 .container {
   padding: 20px;
   background-color: #eaf4f4;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Center align text */
+  text-align: center;
 }
 
 h2 {
@@ -23,10 +24,10 @@ h2 {
 .pastorImage {
   width: 200px; /* Adjust size as needed */
   height: auto; /* Maintain aspect ratio */
-  border-radius: 50%; /* Circular image */
-  border: 3px solid #004d40; /* Border color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
-  margin-bottom: 10px; /* Space between image and name */
+  border-radius: 50%;
+  border: 3px solid #004d40;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
 }
 
 .pastorName {
@@ -37,8 +38,8 @@ h2 {
 .secondaryLeaders {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Space between images */
-  margin-top: 20px; /* Space above the secondary leaders section */
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .secondaryRole {
@@ -46,12 +47,12 @@ h2 {
 }
 
 .roleImage {
-  width: 150px; /* Adjust size as needed */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Rounded corners */
-  border: 2px solid #004d40; /* Border color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
-  margin-bottom: 5px; /* Space between image and text */
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #004d40;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
 }
 
 .roleName {
@@ -67,14 +68,114 @@ h2 {
 
 .additionalLeaders {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping if there is not enough space */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; /* Space between images */
-  margin-top: 20px; /* Space above the additional roles section */
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .additionalRole {
   text-align: center;
-  width: 150px; /* Adjust width as needed */
+  width: 150px;
 }
 
+/* Media Queries */
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  .pastorImage {
+    width: 150px; /* Smaller size for mobile */
+  }
+
+  .pastorName {
+    font-size: 1rem; /* Smaller text for mobile */
+  }
+
+  .secondaryLeaders,
+  .additionalLeaders {
+    flex-direction: column;
+    gap: 10px; /* Less space between images */
+  }
+
+  .roleImage {
+    width: 120px; /* Smaller size for mobile */
+  }
+
+  .roleName {
+    font-size: 1rem; /* Smaller text for mobile */
+  }
+
+  .rolePerson {
+    font-size: 0.9rem; /* Smaller text for mobile */
+  }
+
+  .additionalRole {
+    width: 120px; /* Smaller width for mobile */
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  .pastorImage {
+    width: 180px; /* Medium size for tablets */
+  }
+
+  .pastorName {
+    font-size: 1.1rem; /* Slightly larger text for tablets */
+  }
+
+  .secondaryLeaders,
+  .additionalLeaders {
+    flex-direction: row;
+    gap: 15px; /* Medium space between images */
+  }
+
+  .roleImage {
+    width: 130px; /* Medium size for tablets */
+  }
+
+  .roleName {
+    font-size: 1.1rem; /* Slightly larger text for tablets */
+  }
+
+  .rolePerson {
+    font-size: 1rem; /* Medium text for tablets */
+  }
+
+  .additionalRole {
+    width: 130px; /* Medium width for tablets */
+  }
+}
+
+/* Desktop */
+@media (min-width: 901px) {
+  .pastorImage {
+    width: 200px; /* Default size for desktops */
+  }
+
+  .pastorName {
+    font-size: 1.2rem; /* Default text size for desktops */
+  }
+
+  .secondaryLeaders,
+  .additionalLeaders {
+    flex-direction: row;
+    gap: 20px; /* Default space between images */
+  }
+
+  .roleImage {
+    width: 150px; /* Default size for desktops */
+  }
+
+  .roleName {
+    font-size: 1.1rem; /* Default text size for desktops */
+  }
+
+  .rolePerson {
+    font-size: 1rem; /* Default text size for desktops */
+  }
+
+  .additionalRole {
+    width: 150px; /* Default width for desktops */
+  }
+}

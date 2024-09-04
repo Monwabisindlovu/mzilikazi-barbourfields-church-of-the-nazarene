@@ -80,3 +80,74 @@
     transform: scale(0.9); /* Zoom out */
   }
 }
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  .manualLink {
+    font-size: 0.9em; /* Smaller font size for mobile */
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
+  }
+
+  .section {
+    flex-direction: column; /* Stack text and images vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .image {
+    width: 100px; /* Smaller image size for mobile */
+  }
+
+  .imageContainerLeft,
+  .imageContainerRight {
+    margin: 10px 0; /* Reduce margins for mobile */
+  }
+
+  .textContainer {
+    padding: 0; /* Remove padding for mobile */
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  .manualLink {
+    font-size: 1em; /* Default font size for tablets */
+    top: 15px; /* Adjust top position */
+    right: 15px; /* Adjust right position */
+  }
+
+  .section {
+    flex-direction: row; /* Keep text and images side by side */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .image {
+    width: 125px; /* Medium image size for tablets */
+  }
+
+  .imageContainerLeft,
+  .imageContainerRight {
+    margin: 15px; /* Medium margins for tablets */
+  }
+
+  .textContainer {
+    padding: 0 15px; /* Adjust padding for tablets */
+  }
+}
+
+/* Desktop */
+@media (min-width: 901px) {
+  .manualLink {
+    font-size: 1em; /* Default font size for desktops */
+    top: 20px; /* Default top position */
+    right: 20px; /* Default right position */
+  }
+
+  .image {
+    width: 150px; /* Default image size for desktops */
+  }
+
+  .textContainer {
+    padding: 0 20px; /* Default padding for desktops */
+  }
+}

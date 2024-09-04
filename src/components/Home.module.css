@@ -1,3 +1,4 @@
+/* Base Styles */
 .container {
   padding: 20px;
   background-color: #eaf4f4;
@@ -99,5 +100,86 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  .serviceImage {
+    width: 80%; /* Increase width for smaller screens */
+  }
+
+  .sideImage {
+    width: 100%; /* Full width for side images on mobile */
+  }
+
+  .welcome h1 {
+    font-size: 1.5rem; /* Smaller font size for mobile */
+  }
+
+  .welcome p {
+    font-size: 0.9rem; /* Smaller font size for mobile */
+  }
+
+  .msipha {
+    font-size: 1rem; /* Smaller font size for mobile */
+  }
+
+  .additionalInfo {
+    font-size: 0.9rem; /* Smaller font size for mobile */
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  .serviceImage {
+    width: 70%; /* Medium width for tablets */
+  }
+
+  .sideImage {
+    width: 50%; /* Medium width for side images on tablets */
+  }
+
+  .welcome h1 {
+    font-size: 1.75rem; /* Slightly smaller font size for tablets */
+  }
+
+  .welcome p {
+    font-size: 1rem; /* Slightly larger font size for tablets */
+  }
+
+  .msipha {
+    font-size: 1.1rem; /* Slightly larger font size for tablets */
+  }
+
+  .additionalInfo {
+    font-size: 1rem; /* Default font size for tablets */
+  }
+}
+
+/* Desktop */
+@media (min-width: 901px) {
+  .serviceImage {
+    width: 60%; /* Default width for desktops */
+  }
+
+  .sideImage {
+    width: 40%; /* Default width for side images on desktops */
+  }
+
+  .welcome h1 {
+    font-size: 2rem; /* Default font size for desktops */
+  }
+
+  .welcome p {
+    font-size: 1rem; /* Default font size for desktops */
+  }
+
+  .msipha {
+    font-size: 1.2rem; /* Default font size for desktops */
+  }
+
+  .additionalInfo {
+    font-size: 1rem; /* Default font size for desktops */
   }
 }
