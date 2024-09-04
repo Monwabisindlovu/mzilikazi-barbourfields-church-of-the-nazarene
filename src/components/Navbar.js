@@ -1,23 +1,24 @@
+// Navbar.jsx or Navbar.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css'; // Assuming you have CSS for Navbar
+import './Navbar.module.css'; // Import the module CSS
 
-function Navbar() {
+const Navbar = () => {
   return (
-    <nav className={styles.navbar}>
+    <nav className="navbar">
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about-us">About Us</Link></li>
-        <li><Link to="/mission">Mission</Link></li>
-        <li><Link to="/vision">Vision</Link></li>
-        <li><Link to="/leadership">Leadership</Link></li>
-        <li><Link to="/media">Media</Link></li>
-        <li><Link to="/upcoming-events">Upcoming Events</Link></li>
-        <li><Link to="/contact-us">Contact Us</Link></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/mission">Mission</a></li>
+        <li><a href="/vision">Vision</a></li>
+        <li><a href="/leadership">Leadership</a></li>
+        <li><a href="/media">Media</a></li>
+        <li><a href="/upcoming-events">Upcoming Events</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
         <li><a href="/donations">Donations</a></li>
       </ul>
     </nav>
   );
-}
+};
 
 export default Navbar;

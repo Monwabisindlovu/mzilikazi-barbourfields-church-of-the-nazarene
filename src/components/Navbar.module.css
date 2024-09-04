@@ -1,3 +1,4 @@
+/* Main App Styles */
 .App {
   text-align: center;
 }
@@ -14,29 +15,10 @@
   padding: 0;
 }
 
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-  background-color: #282c34;
-  padding: 10px;
-}
-
-nav ul li {
-  display: inline;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-}
-
-nav ul li a:hover {
-  background-color: #61dafb;
-  border-radius: 4px;
+.App-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -70,10 +52,32 @@ h2 {
   color: gold;
 }
 
-.App-logo {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
+/* Navbar Styles */
+.navbar {
+  background-color: #282c34;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar ul li {
+  display: inline;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.navbar ul li a:hover {
+  background-color: #61dafb;
+  border-radius: 4px;
 }
 
 /* Media Queries for responsiveness */
@@ -84,11 +88,12 @@ h2 {
     font-size: 1.5em;
   }
 
-  nav ul {
-    flex-direction: column;
+  .navbar ul {
+    flex-direction: column; /* Stack links vertically */
+    align-items: center;
   }
 
-  nav ul li {
+  .navbar ul li {
     display: block;
     margin: 5px 0;
   }

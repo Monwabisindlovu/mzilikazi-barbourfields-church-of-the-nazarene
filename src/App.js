@@ -9,7 +9,7 @@ import Leadership from './components/Leadership';
 import Media from './components/Media';
 import UpcomingEvents from './components/UpcomingEvents';
 import ContactUs from './components/ContactUs';
-import Donations from './components/Donations'; // Import Donations component
+import Donations from './components/Donations';
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
           <Route path="/media" element={<Media />} />
           <Route path="/upcoming-events" element={<UpcomingEvents />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/donations" element={<Donations />} /> {/* Add Donations route */}
+          <Route path="/donations" element={<Donations />} />
         </Routes>
       </div>
     </Router>
