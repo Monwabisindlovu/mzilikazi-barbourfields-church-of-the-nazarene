@@ -1,0 +1,37 @@
+.container {
+  padding: 20px;
+  background-color: #eaf4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2rem;
+  color: #004d40;
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+  color: #004d40;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.readMoreLink {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #07362e;
+  font-size: 1rem;
+  text-decoration: underline;
+}

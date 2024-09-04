@@ -1,0 +1,82 @@
+.container {
+  position: relative;
+  padding: 20px;
+}
+
+.manualLink {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #004d40;
+  text-decoration: underline;
+  font-size: 1em;
+  z-index: 10;
+}
+
+.text {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.textContainer {
+  flex: 1;
+  padding: 0 20px; /* Add padding to separate from images */
+}
+
+.image {
+  width: 150px; /* Adjust size as needed */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainerLeft {
+  margin-right: 20px; /* Space between image and text */
+  animation: zoomInOutLeft 8s infinite; /* Apply zoom animation */
+}
+
+.imageContainerRight {
+  margin-left: 20px; /* Space between image and text */
+  animation: zoomInOutRight 8s infinite; /* Apply zoom animation */
+}
+
+.section h3 {
+  color: #004d40;
+  margin-bottom: 10px;
+}
+
+.section p {
+  color: #151514;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.section a {
+  color: #004d40;
+  text-decoration: underline;
+}
+
+/* Zoom-in and Zoom-out Animation Keyframes */
+@keyframes zoomInOutLeft {
+  0%, 100% {
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    transform: scale(1.1); /* Zoom in */
+  }
+}
+
+@keyframes zoomInOutRight {
+  0%, 100% {
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    transform: scale(0.9); /* Zoom out */
+  }
+}

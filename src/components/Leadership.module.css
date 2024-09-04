@@ -1,0 +1,80 @@
+/* Leadership.module.css */
+
+.container {
+  padding: 20px;
+  background-color: #eaf4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center align text */
+}
+
+h2 {
+  font-size: 2rem;
+  color: #004d40;
+  margin-bottom: 10px;
+}
+
+.pastorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pastorImage {
+  width: 200px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circular image */
+  border: 3px solid #004d40; /* Border color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  margin-bottom: 10px; /* Space between image and name */
+}
+
+.pastorName {
+  font-size: 1.2rem;
+  color: #004d40;
+}
+
+.secondaryLeaders {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between images */
+  margin-top: 20px; /* Space above the secondary leaders section */
+}
+
+.secondaryRole {
+  text-align: center;
+}
+
+.roleImage {
+  width: 150px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Rounded corners */
+  border: 2px solid #004d40; /* Border color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  margin-bottom: 5px; /* Space between image and text */
+}
+
+.roleName {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #004d40;
+}
+
+.rolePerson {
+  font-size: 1rem;
+  color: #004d40;
+}
+
+.additionalLeaders {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping if there is not enough space */
+  justify-content: center;
+  gap: 20px; /* Space between images */
+  margin-top: 20px; /* Space above the additional roles section */
+}
+
+.additionalRole {
+  text-align: center;
+  width: 150px; /* Adjust width as needed */
+}
+

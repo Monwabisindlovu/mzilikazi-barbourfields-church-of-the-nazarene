@@ -2,37 +2,79 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-title {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #282c34;
+  padding: 10px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+nav ul li a:hover {
+  background-color: #61dafb;
+  border-radius: 4px;
+}
+
+h2 {
+  color: #144dbf;
+  margin-top: 20px;
+}
+
+/* Styling for the sections when links are clicked */
+.section {
+  background: linear-gradient(135deg, #4a90e2, #50d2c2); /* Gradient background */
+  color: rgb(241, 230, 9); /* Text color */
+  padding: 50px; /* Padding around the content */
+  min-height: 100vh; /* Ensures section takes up full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 1.2em;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Add this class for gold text */
+.gold-text {
+  color: gold;
+}
+
+/* Styling for the logo */
+.App-logo {
+  width: 100px; /* Adjust the size as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Space between logo and text */
 }

@@ -1,0 +1,30 @@
+/* ContactUs.module.css */
+
+.container {
+    padding: 20px;
+    background-color: #eaf4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center align text */
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #004d40;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #004d40;
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: #00796b; /* Change color for links */
+    text-decoration: none; /* Remove underline from links */
+  }
+  
+  a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
