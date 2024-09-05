@@ -9,7 +9,7 @@ import Leadership from './components/Leadership';
 import Media from './components/Media';
 import UpcomingEvents from './components/UpcomingEvents';
 import ContactUs from './components/ContactUs';
-import Donations from './components/Donations';
+import Collaboration from './components/Collaboration'; // Corrected import
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
           <Route path="/media" element={<Media />} />
           <Route path="/upcoming-events" element={<UpcomingEvents />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/donations" element={<Donations />} />
+          <Route path="/collaboration" element={<Collaboration />} /> {/* Corrected path */}
         </Routes>
       </div>
     </Router>

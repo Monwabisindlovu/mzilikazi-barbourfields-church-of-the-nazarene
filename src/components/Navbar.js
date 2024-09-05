@@ -15,7 +15,7 @@ const Navbar = () => {
         <li><a href="/media">Media</a></li>
         <li><a href="/upcoming-events">Upcoming Events</a></li>
         <li><a href="/contact-us">Contact Us</a></li>
-        <li><a href="/donations">Donations</a></li>
+        <li><a href="/Collaboration">Collaboration</a></li>
       </ul>
     </nav>
   );
