@@ -1,55 +1,35 @@
 import React, { useState } from 'react';
-import Lightbox from 'react-spring-lightbox';
-import Modal from 'react-modal';
-import styles from './Media.module.css'; // Assuming you are using CSS modules
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+import { Fullscreen, Zoom } from 'yet-another-react-lightbox/plugins';
+
+import styles from './Media.module.css';
 
 function Media() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const mediaItems = [
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/WhatsApp%20Image%202024-09-03%20at%2013.59.20_6158f60c.jpg?raw=true', alt: 'Sermon 1', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0022.jpg?raw=true', alt: 'Video 2', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0019.jpg?raw=true', alt: 'Podcast 3', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0027.jpg?raw=true', alt: 'Audio 4', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0009.jpg?raw=true', alt: 'Devotional 5', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0025.jpg?raw=true', alt: 'Sermon 6', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0021.jpg?raw=true', alt: 'Video 7', link: 'https://github.com/Monwabisindlovu/portfolio-landing_page/raw/main/images/service.mp4' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0026.jpg?raw=true', alt: 'Podcast 8', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0012.jpg?raw=true', alt: 'Sermon 9', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0013.jpg?raw=true', alt: 'Devotional 10', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0023.jpg?raw=true', alt: 'Audio 11', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0014.jpg?raw=true', alt: 'Video 12', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0024.jpg?raw=true', alt: 'Podcast 13', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0016.jpg?raw=true', alt: 'Sermon 14', link: '#' },
-    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/childrens.jpg?raw=true', alt: 'Devotional 15', link: '#' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/WhatsApp%20Image%202024-09-03%20at%2013.59.20_6158f60c.jpg?raw=true', type: 'image', alt: 'Sermon 1' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0022.jpg?raw=true', type: 'image', alt: 'Video 2' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0019.jpg?raw=true', type: 'image', alt: 'Podcast 3' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0027.jpg?raw=true', type: 'image', alt: 'Audio 4' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0009.jpg?raw=true', type: 'image', alt: 'Devotional 5' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0025.jpg?raw=true', type: 'image', alt: 'Sermon 6' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/raw/main/images/service.mp4', type: 'video', alt: 'Video 7' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0026.jpg?raw=true', type: 'image', alt: 'Podcast 8' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0012.jpg?raw=true', type: 'image', alt: 'Sermon 9' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0013.jpg?raw=true', type: 'image', alt: 'Devotional 10' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0023.jpg?raw=true', type: 'image', alt: 'Audio 11' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0014.jpg?raw=true', type: 'image', alt: 'Video 12' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0024.jpg?raw=true', type: 'image', alt: 'Podcast 13' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0016.jpg?raw=true', type: 'image', alt: 'Sermon 14' },
+    { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/childrens.jpg?raw=true', type: 'image', alt: 'Devotional 15' },
   ];
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + mediaItems.length) % mediaItems.length);
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % mediaItems.length);
-  };
-
-  const handleClick = (index) => {
+  const handleOpenLightbox = (index) => {
     setCurrentIndex(index);
-    setIsOpen(true);
-  };
-
-  const renderMedia = (item) => {
-    if (item.type === 'image') {
-      return <img src={item.src} alt={item.alt} style={{ maxWidth: '100%', maxHeight: '100%' }} />;
-    } else if (item.type === 'video') {
-      return (
-        <video controls autoPlay style={{ maxWidth: '100%', maxHeight: '100%' }}>
-          <source src={item.src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      );
-    }
-    return null;
+    setLightboxOpen(true);
   };
 
   return (
@@ -63,31 +43,22 @@ function Media() {
         {mediaItems.map((item, index) => (
           <div key={index} className={styles.linkItem}>
             <button
-              onClick={() => handleClick(index)}
+              onClick={() => handleOpenLightbox(index)}
               className={styles.mediaButton}
             >
-              {item.type === 'image' ? (
-                <img src={item.src} alt={item.alt} className={styles.mediaImage} />
-              ) : (
-                <div style={{ width: '100px', height: '100px', backgroundColor: '#ddd', textAlign: 'center', lineHeight: '100px' }}>
-                  Video
-                </div>
-              )}
+              <img src={item.src} alt={item.alt} className={styles.mediaImage} />
             </button>
           </div>
         ))}
       </div>
 
-      {/* Lightbox for images and videos */}
-      {isOpen && (
+      {lightboxOpen && (
         <Lightbox
-          isOpen={isOpen}
-          onPrev={handlePrev}
-          onNext={handleNext}
-          onClose={() => setIsOpen(false)}
-          currentIndex={currentIndex}
-          renderHeader={() => <h4>{mediaItems[currentIndex].alt}</h4>}
-          renderContent={() => renderMedia(mediaItems[currentIndex])}
+          slides={mediaItems}
+          open={lightboxOpen}
+          index={currentIndex}
+          close={() => setLightboxOpen(false)}
+          plugins={[Fullscreen, Zoom]}
         />
       )}
     </div>
