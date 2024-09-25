@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
@@ -12,9 +13,13 @@ import ContactUs from './components/ContactUs';
 import Collaboration from './components/Collaboration'; // Corrected import
 
 function App() {
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1024px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
+
   return (
     <Router>
-      <div className="App">
+      <div className={`App ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
         {/* Header Section with Logo */}
         <header className="App-header">
           <img

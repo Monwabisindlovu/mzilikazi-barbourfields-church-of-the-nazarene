@@ -9,7 +9,7 @@ const Navbar = () => {
   const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'}`}>
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about-us">About Us</a></li>
@@ -21,9 +21,6 @@ const Navbar = () => {
         <li><a href="/contact-us">Contact Us</a></li>
         <li><a href="/Collaboration">Collaboration</a></li>
       </ul>
-      {isMobile && <p>This is a mobile device</p>}
-      {isTablet && <p>This is a tablet device</p>}
-      {isDesktop && <p>This is a desktop device</p>}
     </nav>
   );
 };

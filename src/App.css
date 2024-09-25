@@ -78,3 +78,57 @@ h2 {
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 10px; /* Space between logo and text */
 }
+
+/* Mobile-specific styles */
+.App.mobile .App-header {
+  background-color: rgb(20, 76, 95); /* Example */
+  font-size: 14px; /* Example */
+}
+
+.App.mobile .App-title {
+  font-size: 1.5em;
+}
+
+nav.mobile ul {
+  flex-direction: column;
+}
+
+nav.mobile ul li {
+  margin-bottom: 10px;
+}
+
+/* Tablet-specific styles */
+.App.tablet .App-header {
+  background-color: rgb(36, 155, 36); /* Example */
+  font-size: 16px; /* Example */
+}
+
+.App.tablet .App-title {
+  font-size: 1.75em;
+}
+
+nav.tablet ul {
+  flex-direction: row;
+}
+
+nav.tablet ul li {
+  margin: 0 10px;
+}
+
+/* Desktop-specific styles */
+.App.desktop .App-header {
+  background-color: rgb(45, 42, 54); /* Example */
+  font-size: 18px; /* Example */
+}
+
+.App.desktop .App-title {
+  font-size: 2em;
+}
+
+nav.desktop ul {
+  flex-direction: row;
+}
+
+nav.desktop ul li {
+  margin: 0 15px;
+}
