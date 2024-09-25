@@ -1,9 +1,13 @@
-// Navbar.jsx or Navbar.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import './Navbar.module.css'; // Import the module CSS
 
 const Navbar = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1024px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
+
   return (
     <nav className="navbar">
       <ul>
@@ -17,6 +21,9 @@ const Navbar = () => {
         <li><a href="/contact-us">Contact Us</a></li>
         <li><a href="/Collaboration">Collaboration</a></li>
       </ul>
+      {isMobile && <p>This is a mobile device</p>}
+      {isTablet && <p>This is a tablet device</p>}
+      {isDesktop && <p>This is a desktop device</p>}
     </nav>
   );
 };
