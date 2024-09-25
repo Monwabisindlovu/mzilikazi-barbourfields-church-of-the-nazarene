@@ -52,7 +52,7 @@ h2 {
   color: gold;
 }
 
-/* Navbar Styles */
+/* Updated Navbar Styles */
 .navbar {
   background-color: #282c34;
 }
@@ -63,6 +63,7 @@ h2 {
   margin: 0;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap; /* Allows links to wrap to the next line on smaller screens */
 }
 
 .navbar ul li {
@@ -72,7 +73,7 @@ h2 {
 .navbar ul li a {
   color: white;
   text-decoration: none;
-  padding: 10px;
+  padding: 5px 10px; /* Reduced padding for tighter links */
 }
 
 .navbar ul li a:hover {
@@ -89,13 +90,13 @@ h2 {
   }
 
   .navbar ul {
-    flex-direction: column; /* Stack links vertically */
-    align-items: center;
+    flex-direction: row; /* Stack links horizontally but with less space */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
   }
 
-  .navbar ul li {
-    display: block;
-    margin: 5px 0;
+  .navbar ul li a {
+    padding: 5px; /* Further reduce padding for tighter spacing */
+    font-size: 0.9em; /* Slightly reduce font size */
   }
 
   .section {

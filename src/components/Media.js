@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import Lightbox from 'react-image-lightbox';
+import Lightbox from 'react-spring-lightbox';
 import Modal from 'react-modal';
-import 'react-image-lightbox/style.css'; // Import the lightbox styles
-
-import styles from './Media.module.css';
+import styles from './Media.module.css'; // Assuming you are using CSS modules
 
 function Media() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState('');
-  const [currentVideo, setCurrentVideo] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const mediaItems = [
@@ -30,28 +25,31 @@ function Media() {
     { src: 'https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/childrens.jpg?raw=true', alt: 'Devotional 15', link: '#' },
   ];
 
-  const handleImageClick = (index) => {
-    setCurrentIndex(index);
-    setCurrentImage(mediaItems[index].src);
-    setLightboxOpen(true);
-  };
-
-  const handleVideoClick = (index) => {
-    setCurrentIndex(index);
-    setCurrentVideo(mediaItems[index].link);
-    setVideoModalOpen(true);
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + mediaItems.length) % mediaItems.length);
   };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % mediaItems.length);
-    setCurrentImage(mediaItems[(currentIndex + 1) % mediaItems.length].src);
-    setCurrentVideo(mediaItems[(currentIndex + 1) % mediaItems.length].link);
   };
 
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + mediaItems.length) % mediaItems.length);
-    setCurrentImage(mediaItems[(currentIndex - 1 + mediaItems.length) % mediaItems.length].src);
-    setCurrentVideo(mediaItems[(currentIndex - 1 + mediaItems.length) % mediaItems.length].link);
+  const handleClick = (index) => {
+    setCurrentIndex(index);
+    setIsOpen(true);
+  };
+
+  const renderMedia = (item) => {
+    if (item.type === 'image') {
+      return <img src={item.src} alt={item.alt} style={{ maxWidth: '100%', maxHeight: '100%' }} />;
+    } else if (item.type === 'video') {
+      return (
+        <video controls autoPlay style={{ maxWidth: '100%', maxHeight: '100%' }}>
+          <source src={item.src} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      );
+    }
+    return null;
   };
 
   return (
@@ -64,51 +62,34 @@ function Media() {
       <div className={styles.links}>
         {mediaItems.map((item, index) => (
           <div key={index} className={styles.linkItem}>
-            {item.link.endsWith('.mp4') ? (
-              <button
-                onClick={() => handleVideoClick(index)}
-                className={styles.mediaButton}
-              >
+            <button
+              onClick={() => handleClick(index)}
+              className={styles.mediaButton}
+            >
+              {item.type === 'image' ? (
                 <img src={item.src} alt={item.alt} className={styles.mediaImage} />
-              </button>
-            ) : (
-              <button
-                onClick={() => handleImageClick(index)}
-                className={styles.mediaButton}
-              >
-                <img src={item.src} alt={item.alt} className={styles.mediaImage} />
-              </button>
-            )}
+              ) : (
+                <div style={{ width: '100px', height: '100px', backgroundColor: '#ddd', textAlign: 'center', lineHeight: '100px' }}>
+                  Video
+                </div>
+              )}
+            </button>
           </div>
         ))}
       </div>
 
-      {/* Lightbox for images */}
-      {lightboxOpen && (
+      {/* Lightbox for images and videos */}
+      {isOpen && (
         <Lightbox
-          mainSrc={currentImage}
-          nextSrc={mediaItems[(currentIndex + 1) % mediaItems.length].src}
-          prevSrc={mediaItems[(currentIndex - 1 + mediaItems.length) % mediaItems.length].src}
-          onCloseRequest={() => setLightboxOpen(false)}
-          onMovePrevRequest={handlePrevious}
-          onMoveNextRequest={handleNext}
+          isOpen={isOpen}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          onClose={() => setIsOpen(false)}
+          currentIndex={currentIndex}
+          renderHeader={() => <h4>{mediaItems[currentIndex].alt}</h4>}
+          renderContent={() => renderMedia(mediaItems[currentIndex])}
         />
       )}
-
-      {/* Modal for videos */}
-      <Modal
-        isOpen={videoModalOpen}
-        onRequestClose={() => setVideoModalOpen(false)}
-        contentLabel="Video Modal"
-        className={styles.modal}
-        overlayClassName={styles.overlay}
-      >
-        <button onClick={() => setVideoModalOpen(false)} className={styles.closeButton}>Close</button>
-        <video controls autoPlay className={styles.videoPlayer}>
-          <source src={currentVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </Modal>
     </div>
   );
 }
