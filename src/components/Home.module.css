@@ -1,43 +1,79 @@
+/* Home.module.css */
+
 /* Base Styles */
 .container {
+  background-image: url('https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/logomarca.png?raw=true');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh; /* Ensure it covers the entire viewport height */
   padding: 20px;
-  background-color: #eaf4f4;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-height: 100vh; /* Ensure the container covers the full viewport height */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Space between header and footer */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .welcome {
   text-align: center;
   margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Add transparency for readability */
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .welcome h1 {
   font-size: 2rem;
-  color: #004d40;
+  color: #1724dc;
 }
 
 .welcome p {
   font-size: 1rem;
-  color: #004d40;
+  color: #03182d;
   margin-bottom: 10px;
 }
 
+/* Additional Info Styling */
+.additionalInfo {
+  color: #ee0f0f; /* Change this color as needed */
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Services Section Styling */
 .services {
   text-align: center;
-  color: #004d40;
-  margin-bottom: 20px; /* Add margin for spacing */
+  color: #09090d; /* Text color */
+  margin-bottom: 20px; /* Margin for spacing */
+  background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
+  padding: 20px; /* Padding for spacing */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+/* Styling for h2 in services */
+.services h2 {
+  color: #1414c6; /* Heading color */
+  font-size: 1.5rem; /* Font size */
+  margin-bottom: 10px; /* Spacing below the heading */
+}
+
+/* Styling for p in services */
+.services p {
+  color: #010217; /* Paragraph text color */
+  font-size: 1rem; /* Font size */
+  margin-bottom: 10px; /* Space between paragraphs */
 }
 
 .imageContainer {
   display: flex;
   align-items: center;
   gap: 10px; /* Reduce the gap between images */
-  margin-top: 10px; /* Adjust top margin to control space above */
-  flex: 1; /* Allow it to grow and take available space */
+  margin-top: 10px; /* Adjust top margin */
+  flex: 1; /* Allow it to grow */
 }
 
 .centerImageContainer {
@@ -54,43 +90,34 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  animation: breathing 4s infinite; /* Add breathing animation */
+  animation: breathing 4s infinite;
 }
 
-.sideImage {
-  width: 40%; /* Make the image cover the full width */
-  height: auto; /* Adjust the height to maintain aspect ratio */
-  max-width: none; /* Remove the max-width limit */
-  max-height: none; /* Remove the max-height limit */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.services .sideImage {
+  width: 10px !important; /* Enforce the size change */
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  animation: breathing 4s infinite; /* Add breathing animation */
 }
 
 .msipha {
   font-size: 1.2rem;
   text-align: center;
-  color: #004d40;
-  margin-top: 0; /* Remove top margin to eliminate space */
-}
-
-.additionalInfo {
-  margin-top: 20px; /* Adjust top margin to create space */
-  margin-bottom: 20px; /* Adjust bottom margin if needed */
-  text-align: center; /* Center align text */
-  font-size: 1rem; /* Adjust font size if needed */
-  color: #004d40; /* Match text color with other sections */
+  color: #101211;
+  margin-top: 0; /* Remove top margin */
 }
 
 .footer {
   text-align: center;
+  padding: 10px;
+  background-color: rgba(235, 242, 243, 0.5); /* Optional: Footer background */
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
   font-size: 0.875rem;
-  color: #004d40;
-  margin-top: 20px;
 }
 
-/* Breathing animation */
+/* Breathing animation for serviceImage only */
 @keyframes breathing {
   0% {
     transform: scale(1);
@@ -101,6 +128,28 @@
   100% {
     transform: scale(1);
   }
+}
+
+/* Address Section Styling */
+.addressSection {
+  text-align: center; /* Center align text */
+  color: #1010c6; /* Text color */
+  margin-bottom: 20px; /* Margin for spacing */
+  background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
+  padding: 20px; /* Padding for spacing */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+.addressSection h2 {
+  color: #1414c6; /* Heading color */
+  font-size: 1.5rem; /* Font size */
+  margin-bottom: 10px; /* Spacing below the heading */
+}
+
+.addressSection p {
+  color: #d30d0d; /* Paragraph text color */
+  font-size: 1rem; /* Font size */
 }
 
 /* Mobile Devices */

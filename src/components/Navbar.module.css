@@ -52,7 +52,7 @@ h2 {
   color: gold;
 }
 
-/* Updated Navbar Styles */
+/* Navbar Styles */
 .navbar {
   background-color: #282c34;
 }
@@ -62,18 +62,18 @@ h2 {
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap; /* Allows links to wrap to the next line on smaller screens */
+  flex-direction: column; /* Stack links vertically */
+  justify-content: center;
 }
 
 .navbar ul li {
-  display: inline;
+  margin: 10px 0; /* Space between the links */
 }
 
 .navbar ul li a {
   color: white;
   text-decoration: none;
-  padding: 5px 10px; /* Reduced padding for tighter links */
+  padding: 10px 15px;
 }
 
 .navbar ul li a:hover {
@@ -81,62 +81,63 @@ h2 {
   border-radius: 4px;
 }
 
-/* Media Queries for responsiveness */
+/* Dropdown styles */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
 
-/* Mobile Devices */
-@media (max-width: 600px) {
-  .App-title {
-    font-size: 1.5em;
-  }
+.dropdown-content li {
+  display: block;
+}
 
+.dropdown-content a {
+  padding: 10px;
+  color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Show dropdown on hover */
+}
+
+.navbar.mobile .dropdown-content,
+.navbar.tablet .dropdown-content {
+  position: relative;
+  width: 100%;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 767px) {
   .navbar ul {
-    flex-direction: row; /* Stack links horizontally but with less space */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-direction: column;
   }
 
   .navbar ul li a {
-    padding: 5px; /* Further reduce padding for tighter spacing */
-    font-size: 0.9em; /* Slightly reduce font size */
-  }
-
-  .section {
-    padding: 20px;
-  }
-
-  .section h2 {
-    font-size: 1.8em;
-  }
-
-  .section p {
-    font-size: 1em;
-    max-width: 100%;
-  }
-
-  .App-logo {
-    width: 80px;
+    padding: 10px 20px;
   }
 }
 
 /* Tablets */
-@media (min-width: 601px) and (max-width: 900px) {
-  .App-title {
-    font-size: 1.8em;
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar ul {
+    flex-direction: column;
   }
 
-  .section {
-    padding: 30px;
+  .navbar ul li a {
+    padding: 10px 20px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .navbar ul {
+    flex-direction: column;
   }
 
-  .section h2 {
-    font-size: 2.2em;
-  }
-
-  .section p {
-    font-size: 1.1em;
-    max-width: 90%;
-  }
-
-  .App-logo {
-    width: 90px;
+  .navbar ul li a {
+    padding: 10px 20px;
   }
 }

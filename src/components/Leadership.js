@@ -16,56 +16,59 @@ function Leadership() {
         <p className={styles.pastorName}>Pastor in Charge Rev I. Msipha</p>
       </div>
 
-      {/* Secretary and Church Treasurer */}
-      <div className={styles.secondaryLeaders}>
-        <div className={styles.secondaryRole}>
+      {/* Secondary Leaders: Secretary and Church Treasurer */}
+      <div className={styles.leaderContainer}>
+        <div className={styles.leader}>
           <img
-            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/buhle.jpg?raw=true"  // Replace with actual image URL
+            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/buhle1.jpg?raw=true"
             alt="Secretary Buhle"
-            className={styles.roleImage}
+            className={styles.secretaryImage}
           />
-          <p className={styles.roleName}>Secretary</p>
-          <p className={styles.rolePerson}>Buhle</p>
+          <div className={styles.secretaryName}>Secretary</div>
+          <div className={styles.secretaryPerson}>Buhle</div>
         </div>
-        <div className={styles.secondaryRole}>
+
+        <div className={styles.leader}>
           <img
-            src="https://example.com/treasurer-image.jpg"  // Replace with actual image URL
+            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/mrs%20ncube.jpg?raw=true"
             alt="Church Treasurer Mrs. P. Ncube"
-            className={styles.roleImage}
+            className={styles.treasurerImage}
           />
-          <p className={styles.roleName}>Church Treasurer</p>
-          <p className={styles.rolePerson}>Mrs. P. Ncube</p>
+          <div className={styles.treasurerName}>Church Treasurer</div>
+          <div className={styles.treasurerPerson}>Mrs. P. Ncube</div>
         </div>
       </div>
 
       {/* Additional Leadership Roles */}
-      <div className={styles.additionalLeaders}>
-        <div className={styles.additionalRole}>
+      <div className={styles.leaderContainer}>
+        <div className={styles.leader}>
           <img
-            src="https://example.com/sunday-school-image.jpg"  // Replace with actual image URL
+            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/mr%20ngulube.jpg?raw=true"
             alt="Sunday School Leader Mr. R. Ngulube"
-            className={styles.roleImage}
+            className={styles.schoolLeaderImage}
           />
-          <p className={styles.roleName}>Sunday School Leader</p>
-          <p className={styles.rolePerson}>Mr. R. Ngulube</p>
+          <div className={styles.schoolLeaderName}>Sunday School Leader</div>
+          <div className={styles.schoolLeaderPerson}>Mr. R. Ngulube</div>
         </div>
-        <div className={styles.additionalRole}>
+
+        <div className={styles.leader}>
           <img
-            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/mrs%20msipha.jpg?raw=true"  // Replace with actual image URL
+            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/mrs%20msipha.jpg?raw=true"
             alt="Children's Ministry Mrs. C. Msipha"
-            className={styles.roleImage}
+            className={styles.childrenLeaderImage}
           />
-          <p className={styles.roleName}>Children's Ministry</p>
-          <p className={styles.rolePerson}>Mrs. C. Msipha</p>
+          <div className={styles.childrenLeaderName}>Children's Ministry</div>
+          <div className={styles.childrenLeaderPerson}>Mrs. C. Msipha</div>
         </div>
-        <div className={styles.additionalRole}>
+
+        <div className={styles.leader}>
           <img
-            src="https://example.com/chairman-image.jpg"  // Replace with actual image URL
+            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/mr%20ncube.jpg?raw=true"
             alt="Chairman Mr. N. Ncube"
-            className={styles.roleImage}
+            className={styles.chairmanImage}
           />
-          <p className={styles.roleName}>Chairman</p>
-          <p className={styles.rolePerson}>Mr. N. Ncube</p>
+          <div className={styles.chairmanName}>Chairman</div>
+          <div className={styles.chairmanPerson}>Mr. N. Ncube</div>
         </div>
       </div>
     </div>

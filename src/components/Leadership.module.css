@@ -1,5 +1,3 @@
-/* Leadership.module.css */
-
 /* Base Styles */
 .container {
   padding: 20px;
@@ -22,8 +20,8 @@ h2 {
 }
 
 .pastorImage {
-  width: 200px; /* Adjust size as needed */
-  height: auto; /* Maintain aspect ratio */
+  width: 200px;
+  height: auto;
   border-radius: 50%;
   border: 3px solid #004d40;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -35,18 +33,16 @@ h2 {
   color: #004d40;
 }
 
-.secondaryLeaders {
+/* Shared styles for other leaders */
+.leaderContainer {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
   margin-top: 20px;
 }
 
-.secondaryRole {
-  text-align: center;
-}
-
-.roleImage {
+.leaderImage {
   width: 150px;
   height: auto;
   border-radius: 8px;
@@ -55,127 +51,112 @@ h2 {
   margin-bottom: 5px;
 }
 
-.roleName {
+.leaderName {
   font-size: 1.1rem;
   font-weight: bold;
   color: #004d40;
 }
 
-.rolePerson {
+.leaderPerson {
   font-size: 1rem;
   color: #004d40;
 }
 
-.additionalLeaders {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+/* Specific role styles for the other leaders to match Mrs. P. Ncube */
+.secretaryImage, .treasurerImage, .schoolLeaderImage, .childrenLeaderImage, .chairmanImage {
+  width: 150px; /* Default size */
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #004d40;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
 }
 
-.additionalRole {
-  text-align: center;
-  width: 150px;
+.secretaryName, .treasurerName, .schoolLeaderName, .childrenLeaderName, .chairmanName {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #004d40;
 }
 
+.secretaryPerson, .treasurerPerson, .schoolLeaderPerson, .childrenLeaderPerson, .chairmanPerson {
+  font-size: 1rem;
+  color: #004d40;
+}
+
+/* Individual customization for each leader image */
+.pastorImage { width: 200px; }
+.secretaryImage { width: 130px; }
+.treasurerImage { width: 150px; }
+.schoolLeaderImage { width: 120px; }
+.childrenLeaderImage { width: 140px; }
+.chairmanImage { width: 50px; }
 /* Media Queries */
 
 /* Mobile Devices */
 @media (max-width: 600px) {
   .pastorImage {
-    width: 150px; /* Smaller size for mobile */
+    width: 150px;
   }
 
   .pastorName {
-    font-size: 1rem; /* Smaller text for mobile */
+    font-size: 1rem;
   }
 
-  .secondaryLeaders,
-  .additionalLeaders {
-    flex-direction: column;
-    gap: 10px; /* Less space between images */
+  .leaderImage, .secretaryImage, .treasurerImage, .schoolLeaderImage, .childrenLeaderImage, .chairmanImage {
+    width: 120px;
   }
 
-  .roleImage {
-    width: 120px; /* Smaller size for mobile */
+  .leaderName, .secretaryName, .treasurerName, .schoolLeaderName, .childrenLeaderName, .chairmanName {
+    font-size: 1rem;
   }
 
-  .roleName {
-    font-size: 1rem; /* Smaller text for mobile */
-  }
-
-  .rolePerson {
-    font-size: 0.9rem; /* Smaller text for mobile */
-  }
-
-  .additionalRole {
-    width: 120px; /* Smaller width for mobile */
+  .leaderPerson, .secretaryPerson, .treasurerPerson, .schoolLeaderPerson, .childrenLeaderPerson, .chairmanPerson {
+    font-size: 0.9rem;
   }
 }
 
 /* Tablets */
 @media (min-width: 601px) and (max-width: 900px) {
   .pastorImage {
-    width: 180px; /* Medium size for tablets */
+    width: 180px;
   }
 
   .pastorName {
-    font-size: 1.1rem; /* Slightly larger text for tablets */
+    font-size: 1.1rem;
   }
 
-  .secondaryLeaders,
-  .additionalLeaders {
-    flex-direction: row;
-    gap: 15px; /* Medium space between images */
+  .leaderImage, .secretaryImage, .treasurerImage, .schoolLeaderImage, .childrenLeaderImage, .chairmanImage {
+    width: 130px;
   }
 
-  .roleImage {
-    width: 130px; /* Medium size for tablets */
+  .leaderName, .secretaryName, .treasurerName, .schoolLeaderName, .childrenLeaderName, .chairmanName {
+    font-size: 1.1rem;
   }
 
-  .roleName {
-    font-size: 1.1rem; /* Slightly larger text for tablets */
-  }
-
-  .rolePerson {
-    font-size: 1rem; /* Medium text for tablets */
-  }
-
-  .additionalRole {
-    width: 130px; /* Medium width for tablets */
+  .leaderPerson, .secretaryPerson, .treasurerPerson, .schoolLeaderPerson, .childrenLeaderPerson, .chairmanPerson {
+    font-size: 1rem;
   }
 }
 
 /* Desktop */
 @media (min-width: 901px) {
   .pastorImage {
-    width: 200px; /* Default size for desktops */
+    width: 200px;
   }
 
   .pastorName {
-    font-size: 1.2rem; /* Default text size for desktops */
+    font-size: 1.2rem;
   }
 
-  .secondaryLeaders,
-  .additionalLeaders {
-    flex-direction: row;
-    gap: 20px; /* Default space between images */
+  .leaderImage, .secretaryImage, .treasurerImage, .schoolLeaderImage, .childrenLeaderImage, .chairmanImage {
+    width: 150px;
   }
 
-  .roleImage {
-    width: 150px; /* Default size for desktops */
+  .leaderName, .secretaryName, .treasurerName, .schoolLeaderName, .childrenLeaderName, .chairmanName {
+    font-size: 1.1rem;
   }
 
-  .roleName {
-    font-size: 1.1rem; /* Default text size for desktops */
-  }
-
-  .rolePerson {
-    font-size: 1rem; /* Default text size for desktops */
-  }
-
-  .additionalRole {
-    width: 150px; /* Default width for desktops */
+  .leaderPerson, .secretaryPerson, .treasurerPerson, .schoolLeaderPerson, .childrenLeaderPerson, .chairmanPerson {
+    font-size: 1rem;
   }
 }

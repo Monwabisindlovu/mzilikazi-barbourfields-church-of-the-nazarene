@@ -1,0 +1,60 @@
+
+/* Container styles */
+.container {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(230, 233, 232, 0.8), rgba(178, 223, 219, 0.8)); /* Gradient background with some transparency */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px; /* Constrain width for better appearance */
+}
+
+.title {
+  font-size: 2.5rem; /* Larger font size for the title */
+  color: #e61e13;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 1.2rem; /* Slightly larger description */
+  color: #d315b7; /* A softer color for description */
+  margin-bottom: 20px;
+}
+
+.eventList {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove padding */
+}
+
+.eventItem {
+  font-size: 1.2rem; /* Event text size */
+  color: #004d40; /* Consistent color */
+  margin: 10px 0; /* Space between items */
+  padding: 15px; /* Increased padding for a more spacious look */
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for event items */
+  border: 1px solid #004d40; /* Border around event items */
+  border-radius: 5px; /* Rounded corners */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition */
+}
+
+.eventItem:hover {
+  transform: translateY(-5px); /* Slightly lift on hover */
+  cursor: pointer; /* Pointer cursor */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem; /* Responsive font size for title */
+  }
+
+  .description {
+    font-size: 1rem; /* Responsive font size for description */
+  }
+
+  .eventItem {
+    font-size: 1rem; /* Responsive font size for event items */
+  }
+}

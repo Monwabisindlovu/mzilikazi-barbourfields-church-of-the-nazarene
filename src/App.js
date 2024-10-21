@@ -10,7 +10,7 @@ import Leadership from './components/Leadership';
 import Media from './components/Media';
 import UpcomingEvents from './components/UpcomingEvents';
 import ContactUs from './components/ContactUs';
-import Collaboration from './components/Collaboration'; // Corrected import
+import Partnership from './components/Partnership'; // Corrected import
 
 function App() {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -44,7 +44,7 @@ function App() {
           <Route path="/media" element={<Media />} />
           <Route path="/upcoming-events" element={<UpcomingEvents />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/collaboration" element={<Collaboration />} /> {/* Corrected path */}
+          <Route path="/Partnership" element={<Partnership />} /> {/* Corrected path */}
         </Routes>
       </div>
     </Router>
