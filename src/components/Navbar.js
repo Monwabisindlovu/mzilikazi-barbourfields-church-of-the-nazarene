@@ -1,29 +1,23 @@
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
-import './Navbar.module.css'; // Still linked in case you have custom styles
 
 const Navbar = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const isTablet = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1024px)' });
-
-  const fontSizeClass = isMobile ? 'text-xs' : isTablet ? 'text-sm' : 'text-base';
-
   return (
-    <nav className={`navbar flex justify-center items-center py-3 bg-gray-800 ${fontSizeClass}`}>
-      <ul className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 text-white font-medium">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/mission">Mission</a></li>
-        <li><a href="/vision">Vision</a></li>
-        <li><a href="/leadership">Leadership</a></li>
-        <li><a href="/media">Media</a></li>
-        <li><a href="/upcoming-events">Upcoming Events</a></li>
-        <li><a href="/contact-us">Contact Us</a></li>
-        <li><a href="/partnership">Partnership</a></li>
+    <nav className="w-full bg-gray-800 px-2 py-2">
+      <ul className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 text-[10px] sm:text-xs md:text-sm lg:text-base text-white font-medium">
+        <li><a href="/" className="whitespace-nowrap">Home</a></li>
+        <li><a href="/about-us" className="whitespace-nowrap">About Us</a></li>
+        <li><a href="/mission" className="whitespace-nowrap">Mission</a></li>
+        <li><a href="/vision" className="whitespace-nowrap">Vision</a></li>
+        <li><a href="/leadership" className="whitespace-nowrap">Leadership</a></li>
+        <li><a href="/media" className="whitespace-nowrap">Media</a></li>
+        <li><a href="/upcoming-events" className="whitespace-nowrap">Upcoming Events</a></li>
+        <li><a href="/contact-us" className="whitespace-nowrap">Contact Us</a></li>
+        <li><a href="/partnership" className="whitespace-nowrap">Partnership</a></li>
       </ul>
     </nav>
   );
 };
 
 export default Navbar;
+
 
