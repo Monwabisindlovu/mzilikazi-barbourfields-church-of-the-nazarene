@@ -19,7 +19,9 @@
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.26.1",
     "react-scripts": "^5.0.1",
+    "react-slick": "^0.30.3",
     "react-spring-lightbox": "^1.8.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^4.2.3",
     "yet-another-react-lightbox": "^3.21.6"
   },

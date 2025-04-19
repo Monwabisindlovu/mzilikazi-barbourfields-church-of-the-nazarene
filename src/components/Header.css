@@ -8,6 +8,7 @@ header {
   box-shadow: 0 4px 6px rgba(240, 238, 245, 0.86);
   flex-wrap: nowrap;
   gap: 1rem;
+  margin-bottom: 0; /* Remove bottom margin */
 }
 
 /* Logo + title */
