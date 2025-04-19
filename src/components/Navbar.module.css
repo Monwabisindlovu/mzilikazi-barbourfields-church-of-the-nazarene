@@ -4,7 +4,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(28, 92, 221);
   padding: 20px;
   color: white;
 }
@@ -54,7 +54,7 @@ h2 {
 
 /* Navbar Styles */
 .navbar {
-  background-color: #282c34;
+  background-color: rgb(234, 237, 242);
 }
 
 .navbar ul {
@@ -71,13 +71,15 @@ h2 {
 }
 
 .navbar ul li a {
-  color: white;
+  color: #333; /* Default text color */
   text-decoration: none;
   padding: 10px 15px;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
 }
 
 .navbar ul li a:hover {
   background-color: #61dafb;
+  color: white; /* Change text color to white on hover */
   border-radius: 4px;
 }
 
@@ -86,7 +88,7 @@ h2 {
   display: none;
   position: absolute;
   background-color: white;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 16px rgba(236, 242, 244, 0.1);
   z-index: 1;
 }
 

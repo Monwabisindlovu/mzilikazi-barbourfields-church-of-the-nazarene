@@ -1,36 +1,34 @@
 import React from 'react';
 import styles from './Home.module.css';
+import Footer from '../components/Footer'; // ✅ Keep Footer only
 
 function Home() {
   return (
     <div className={styles.container}>
+      {/* ✅ Header removed (already included in App.jsx) */}
+
       {/* Welcome Section */}
       <div className={styles.welcome}>
-        <h1>Welcome to Mzilikazi/Barbourfields Church of the Nazarene</h1>
         <p>
-          We are delighted to welcome you to the online home of the Mzilikazi/Barbourfields Church of the Nazarene.
-          At the heart of our digital doorstep, you will discover a community dedicated to one common purpose: making
-          Christlike Disciples in the nations. Our journey is one of faith, fellowship, and transformation. As we
-          navigate the path of discipleship, we find joy in the pursuit of Christlikeness and the deepening of our faith.
-          Whether you are a longstanding member of our Nazarene family or a newcomer seeking spiritual guidance, you are
-          a treasured part of our story. Here, you will find resources, from our quarterly newsletter to a warm invitation
-          to join our local congregations.
+          We are delighted to welcome you to the online home of the Mzilikazi/Barbourfields Church of the Nazarene...
         </p>
-        <p className={styles.additionalInfo}>You will find more information on the links above</p>
+        <p className={styles.additionalInfo}>
+          You will find more information on the links above
+        </p>
       </div>
 
+      {/* Services and Images */}
       <div className={styles.imageContainer}>
-        {/* Combined Sunday Services and Church Address Section */}
         <div className={styles.servicesAndAddress}>
           <div className={styles.services}>
-            <h2 className={styles.servicesHeader}>Sunday Services</h2> {/* Header with color */}
+            <h2 className={styles.servicesHeader}>Sunday Services</h2>
             <p><strong>Join us every Sunday from 09:00 AM to 12:30 PM for worship.</strong></p>
             <p><strong>Join our youth services every Saturday from 14:00 PM to 16:00 PM.</strong></p>
             <p><strong>Join our women services every Thursday from 14:00 PM to 16:00 PM.</strong></p>
           </div>
 
           <div className={styles.addressSection}>
-            <h3 className={styles.addressHeader}>Church Address</h3> {/* Header with color */}
+            <h3 className={styles.addressHeader}>Church Address</h3>
             <p>Location: 41396 Barbourfields, Bulawayo, Zimbabwe</p>
           </div>
         </div>
@@ -51,10 +49,8 @@ function Home() {
         />
       </div>
 
-      {/* Footer Section */}
-      <footer className={styles.footer}>
-        <p>© 2024 Mzilikazi/Barbourfields Church of the Nazarene. Designed by Monwabisindlovu/Mdue.</p>
-      </footer>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

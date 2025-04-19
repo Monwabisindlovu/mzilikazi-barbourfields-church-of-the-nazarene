@@ -117,7 +117,7 @@ nav.tablet ul li {
 
 /* Desktop-specific styles */
 .App.desktop .App-header {
-  background-color: rgb(45, 42, 54); /* Example */
+  background-color: rgb(10, 10, 238); /* Example */
   font-size: 18px; /* Example */
 }
 

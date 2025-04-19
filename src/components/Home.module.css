@@ -2,233 +2,233 @@
 
 /* Base Styles */
 .container {
-  background-image: url('https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/logomarca.png?raw=true');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh; /* Ensure it covers the entire viewport height */
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Space between header and footer */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.welcome {
-  text-align: center;
-  margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.8); /* Add transparency for readability */
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.welcome h1 {
-  font-size: 2rem;
-  color: #1724dc;
-}
-
-.welcome p {
-  font-size: 1rem;
-  color: #03182d;
-  margin-bottom: 10px;
-}
-
-/* Additional Info Styling */
-.additionalInfo {
-  color: #ee0f0f; /* Change this color as needed */
-  font-size: 1rem;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-/* Services Section Styling */
-.services {
-  text-align: center;
-  color: #09090d; /* Text color */
-  margin-bottom: 20px; /* Margin for spacing */
-  background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
-  padding: 20px; /* Padding for spacing */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-}
-
-/* Styling for h2 in services */
-.services h2 {
-  color: #1414c6; /* Heading color */
-  font-size: 1.5rem; /* Font size */
-  margin-bottom: 10px; /* Spacing below the heading */
-}
-
-/* Styling for p in services */
-.services p {
-  color: #010217; /* Paragraph text color */
-  font-size: 1rem; /* Font size */
-  margin-bottom: 10px; /* Space between paragraphs */
-}
-
-.imageContainer {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Reduce the gap between images */
-  margin-top: 10px; /* Adjust top margin */
-  flex: 1; /* Allow it to grow */
-}
-
-.centerImageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 0; /* Remove bottom margin */
-}
-
-.serviceImage {
-  width: 60%;
-  max-width: 375px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
-  animation: breathing 4s infinite;
-}
-
-.services .sideImage {
-  width: 10px !important; /* Enforce the size change */
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
-}
-
-.msipha {
-  font-size: 1.2rem;
-  text-align: center;
-  color: #101211;
-  margin-top: 0; /* Remove top margin */
-}
-
-.footer {
-  text-align: center;
-  padding: 10px;
-  background-color: rgba(235, 242, 243, 0.5); /* Optional: Footer background */
-  color: rgb(255, 255, 255);
-  border-radius: 8px;
-  font-size: 0.875rem;
-}
-
-/* Breathing animation for serviceImage only */
-@keyframes breathing {
-  0% {
-    transform: scale(1);
+    background-image: url('https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/logomarca.png?raw=true');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh; /* Ensure it covers the entire viewport height */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between header and footer */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  50% {
-    transform: scale(1.05);
+  
+  .welcome {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Add transparency for readability */
+    padding: 20px;
+    border-radius: 8px;
   }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Address Section Styling */
-.addressSection {
-  text-align: center; /* Center align text */
-  color: #1010c6; /* Text color */
-  margin-bottom: 20px; /* Margin for spacing */
-  background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
-  padding: 20px; /* Padding for spacing */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-}
-
-.addressSection h2 {
-  color: #1414c6; /* Heading color */
-  font-size: 1.5rem; /* Font size */
-  margin-bottom: 10px; /* Spacing below the heading */
-}
-
-.addressSection p {
-  color: #d30d0d; /* Paragraph text color */
-  font-size: 1rem; /* Font size */
-}
-
-/* Mobile Devices */
-@media (max-width: 600px) {
-  .serviceImage {
-    width: 80%; /* Increase width for smaller screens */
-  }
-
-  .sideImage {
-    width: 100%; /* Full width for side images on mobile */
-  }
-
+  
   .welcome h1 {
-    font-size: 1.5rem; /* Smaller font size for mobile */
+    font-size: 2rem;
+    color: #1724dc;
   }
-
+  
   .welcome p {
-    font-size: 0.9rem; /* Smaller font size for mobile */
+    font-size: 1rem;
+    color: #03182d;
+    margin-bottom: 10px;
   }
-
-  .msipha {
-    font-size: 1rem; /* Smaller font size for mobile */
-  }
-
+  
+  /* Additional Info Styling */
   .additionalInfo {
-    font-size: 0.9rem; /* Smaller font size for mobile */
+    color: #ee0f0f; /* Change this color as needed */
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
-}
-
-/* Tablets */
-@media (min-width: 601px) and (max-width: 900px) {
+  
+  /* Services Section Styling */
+  .services {
+    text-align: center;
+    color: #09090d; /* Text color */
+    margin-bottom: 20px; /* Margin for spacing */
+    background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
+    padding: 20px; /* Padding for spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  }
+  
+  /* Styling for h2 in services */
+  .services h2 {
+    color: #1414c6; /* Heading color */
+    font-size: 1.5rem; /* Font size */
+    margin-bottom: 10px; /* Spacing below the heading */
+  }
+  
+  /* Styling for p in services */
+  .services p {
+    color: #010217; /* Paragraph text color */
+    font-size: 1rem; /* Font size */
+    margin-bottom: 10px; /* Space between paragraphs */
+  }
+  
+  .imageContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Reduce the gap between images */
+    margin-top: 10px; /* Adjust top margin */
+    flex: 1; /* Allow it to grow */
+  }
+  
+  .centerImageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+  
   .serviceImage {
-    width: 70%; /* Medium width for tablets */
+    width: 60%;
+    max-width: 375px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    animation: breathing 4s infinite;
   }
-
-  .sideImage {
-    width: 50%; /* Medium width for side images on tablets */
+  
+  .services .sideImage {
+    width: 10px !important; /* Enforce the size change */
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
   }
-
-  .welcome h1 {
-    font-size: 1.75rem; /* Slightly smaller font size for tablets */
-  }
-
-  .welcome p {
-    font-size: 1rem; /* Slightly larger font size for tablets */
-  }
-
+  
   .msipha {
-    font-size: 1.1rem; /* Slightly larger font size for tablets */
+    font-size: 1.2rem;
+    text-align: center;
+    color: #101211;
+    margin-top: 0; /* Remove top margin */
   }
-
-  .additionalInfo {
-    font-size: 1rem; /* Default font size for tablets */
+  
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(235, 242, 243, 0.5); /* Optional: Footer background */
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    font-size: 0.875rem;
   }
-}
-
-/* Desktop */
-@media (min-width: 901px) {
-  .serviceImage {
-    width: 60%; /* Default width for desktops */
+  
+  /* Breathing animation for serviceImage only */
+  @keyframes breathing {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
-
-  .sideImage {
-    width: 40%; /* Default width for side images on desktops */
+  
+  /* Address Section Styling */
+  .addressSection {
+    text-align: center; /* Center align text */
+    color: #1010c6; /* Text color */
+    margin-bottom: 20px; /* Margin for spacing */
+    background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
+    padding: 20px; /* Padding for spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
   }
-
-  .welcome h1 {
-    font-size: 2rem; /* Default font size for desktops */
+  
+  .addressSection h2 {
+    color: #1414c6; /* Heading color */
+    font-size: 1.5rem; /* Font size */
+    margin-bottom: 10px; /* Spacing below the heading */
   }
-
-  .welcome p {
-    font-size: 1rem; /* Default font size for desktops */
+  
+  .addressSection p {
+    color: #d30d0d; /* Paragraph text color */
+    font-size: 1rem; /* Font size */
   }
-
-  .msipha {
-    font-size: 1.2rem; /* Default font size for desktops */
+  
+  /* Mobile Devices */
+  @media (max-width: 600px) {
+    .serviceImage {
+      width: 80%; /* Increase width for smaller screens */
+    }
+  
+    .sideImage {
+      width: 100%; /* Full width for side images on mobile */
+    }
+  
+    .welcome h1 {
+      font-size: 1.5rem; /* Smaller font size for mobile */
+    }
+  
+    .welcome p {
+      font-size: 0.9rem; /* Smaller font size for mobile */
+    }
+  
+    .msipha {
+      font-size: 1rem; /* Smaller font size for mobile */
+    }
+  
+    .additionalInfo {
+      font-size: 0.9rem; /* Smaller font size for mobile */
+    }
   }
-
-  .additionalInfo {
-    font-size: 1rem; /* Default font size for desktops */
+  
+  /* Tablets */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .serviceImage {
+      width: 70%; /* Medium width for tablets */
+    }
+  
+    .sideImage {
+      width: 50%; /* Medium width for side images on tablets */
+    }
+  
+    .welcome h1 {
+      font-size: 1.75rem; /* Slightly smaller font size for tablets */
+    }
+  
+    .welcome p {
+      font-size: 1rem; /* Slightly larger font size for tablets */
+    }
+  
+    .msipha {
+      font-size: 1.1rem; /* Slightly larger font size for tablets */
+    }
+  
+    .additionalInfo {
+      font-size: 1rem; /* Default font size for tablets */
+    }
   }
-}
+  
+  /* Desktop */
+  @media (min-width: 901px) {
+    .serviceImage {
+      width: 60%; /* Default width for desktops */
+    }
+  
+    .sideImage {
+      width: 40%; /* Default width for side images on desktops */
+    }
+  
+    .welcome h1 {
+      font-size: 2rem; /* Default font size for desktops */
+    }
+  
+    .welcome p {
+      font-size: 1rem; /* Default font size for desktops */
+    }
+  
+    .msipha {
+      font-size: 1.2rem; /* Default font size for desktops */
+    }
+  
+    .additionalInfo {
+      font-size: 1rem; /* Default font size for desktops */
+    }
+  }
