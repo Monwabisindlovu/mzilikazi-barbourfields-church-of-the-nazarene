@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Home.module.css';
 import Footer from '../components/Footer'; // ✅ Keep Footer only
+import pastorImg from '../assets/pastor.jpg'; // ✅ Add pastor image
 
 function Home() {
   return (
@@ -10,43 +11,29 @@ function Home() {
       {/* Welcome Section */}
       <div className={styles.welcome}>
         <p>
-          We are delighted to welcome you to the online home of the Mzilikazi/Barbourfields Church of the Nazarene...
-        </p>
-        <p className={styles.additionalInfo}>
-          You will find more information on the links above
+          We are delighted to welcome you to the online home of the Mzilikazi Church of the Nazarene...
         </p>
       </div>
 
-      {/* Services and Images */}
-      <div className={styles.imageContainer}>
-        <div className={styles.servicesAndAddress}>
-          <div className={styles.services}>
-            <h2 className={styles.servicesHeader}>Sunday Services</h2>
-            <p><strong>Join us every Sunday from 09:00 AM to 12:30 PM for worship.</strong></p>
-            <p><strong>Join our youth services every Saturday from 14:00 PM to 16:00 PM.</strong></p>
-            <p><strong>Join our women services every Thursday from 14:00 PM to 16:00 PM.</strong></p>
-          </div>
-
-          <div className={styles.addressSection}>
-            <h3 className={styles.addressHeader}>Church Address</h3>
-            <p>Location: 41396 Barbourfields, Bulawayo, Zimbabwe</p>
-          </div>
+      {/* Services + Pastor Image Section */}
+      <div className={styles.servicesLayout}>
+        <div className={styles.servicesText}>
+          <h2>Join Our Services</h2>
+          <p><strong>Sunday (Service): 09:00 AM – 12:30 PM</strong></p>
+          <p><strong>Saturday (Youth): 14:00 PM – 16:00 PM</strong></p>
+          <p><strong>Thursday (Women): 14:00 PM – 16:00 PM</strong></p>
         </div>
 
-        <div className={styles.centerImageContainer}>
-          <img
-            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240830-WA0029.jpg?raw=true"
-            alt="Service 1"
-            className={`${styles.serviceImage} ${styles.vibration}`}
-          />
-          <p className={styles.msipha}>Mr. & Mrs. Msipha</p>
+        <div className={styles.pastorSection}>
+          <img src={pastorImg} alt="Pastor" className={styles.pastorImage} />
+          <p className={styles.pastorName}>Pastor Rev I. Msipha</p>
         </div>
+      </div>
 
-        <img
-          src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/holiness-movement-church-of-the-nazarene-christianity-church-leaf-plant-black-and-white-symbol-logo-brand.png?raw=true"
-          alt="Holy Bible"
-          className={styles.sideImage}
-        />
+      {/* Address Section */}
+      <div className={styles.addressSection}>
+        <h3 className={styles.addressHeader}>Church Address</h3>
+        <p>Location: 41396 Barbourfields, Bulawayo, Zimbabwe</p>
       </div>
 
       {/* Footer */}
