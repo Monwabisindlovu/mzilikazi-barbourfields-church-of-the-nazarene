@@ -42,7 +42,7 @@
 .welcome > p {
   font-size: 2.2rem; /* increased from 1.8rem */
   font-weight: 700;  /* made bold */
-  color:  rgba(28, 31, 71, 0.93);
+  color:  rgba(8, 18, 169, 0.93);
   z-index: 10;
 }
 
@@ -72,7 +72,7 @@
   font-size: 0.95rem;
   line-height: 1.4;
   font-weight: 600; /* made bold */
-  color: rgb(9, 146, 43); /* Charcoal Gray */
+  color: rgb(117, 25, 6); /* Charcoal Gray */
 }
 
 
