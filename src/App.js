@@ -17,7 +17,6 @@ import Partnership from './components/Partnership';
 function App() {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1024px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
 
   return (
     <Router>
@@ -27,7 +26,7 @@ function App() {
         <Header />
 
         {/* ✅ Page Content */}
-        <main className="p-4">
+        <main className="p-4 pt-20"> {/* Add padding-top to prevent content from being hidden under the fixed header */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about-us" element={<AboutUs />} />
@@ -46,3 +45,4 @@ function App() {
 }
 
 export default App;
+

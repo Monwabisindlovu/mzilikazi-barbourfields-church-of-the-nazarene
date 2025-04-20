@@ -1,0 +1,97 @@
+/* Footer Styles */
+.footer {
+  background-color: rgba(28, 31, 71, 0.93); /* Same background as header */
+  color: #ffffff !important; /* Force white text with !important */
+  padding: 0.25rem 1rem; /* Further reduced padding for even smaller footer height */
+  text-align: left;
+  position: relative;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem; /* Reduced gap between items */
+}
+
+.church-description {
+  flex: 1 1 30%; /* Reduced width */
+  font-size: 0.85rem; /* Slightly smaller font */
+  line-height: 1.4;
+  color: #ffffff !important; /* Force white color with !important */
+}
+
+/* Force white text in any descendants of the .church-description */
+.church-description * {
+  color: #ffffff !important;
+}
+
+.quick-links {
+  flex: 1 1 30%; /* Reduced width */
+}
+
+.quick-links h4 {
+  margin-bottom: 0.2rem; /* Reduced margin-bottom */
+  font-size: 1rem; /* Slightly smaller header font */
+  color: #ffffff; /* White for the "Quick Links" header */
+}
+
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links li {
+  margin-bottom: 0.1rem; /* Reduced margin-bottom */
+}
+
+.quick-links li a {
+  color: #fbbf24; /* Yellow for the links */
+  text-decoration: none;
+}
+
+.quick-links li a:hover {
+  color: #ffffff; /* White on hover */
+}
+
+.map-container {
+  position: absolute;
+  top: 0.25rem; /* Reduced top margin */
+  right: 0.25rem; /* Reduced right margin */
+  width: 1.2cm; /* Reduced width */
+  height: 1.2cm; /* Reduced height */
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: none;
+}
+
+.church-info {
+  flex: 1 1 100%;
+  margin-top: 0.25rem; /* Reduced top margin */
+}
+
+.church-info h4 {
+  margin-bottom: 0.2rem; /* Reduced margin-bottom */
+  font-size: 1rem; /* Slightly smaller header font */
+  color: #ffffff; /* White for the church address header */
+}
+
+.church-info p {
+  color: #ffffff; /* White for church description text */
+}
+
+.footer-credit {
+  font-size: 0.8rem; /* Slightly smaller font */
+  margin-top: 0.25rem; /* Reduced margin-top */
+  color: #aaa;
+  text-align: center;
+  width: 100%;
+}

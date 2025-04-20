@@ -1,5 +1,4 @@
 import React from 'react';
-import Slider from 'react-slick';
 import styles from './Home.module.css';
 import Footer from '../components/Footer';
 import pastorImg from '../assets/pastor.jpg';
@@ -8,16 +7,6 @@ import MoreAboutNazarenes from '../components/MoreAboutNazarenes';
 
 
 function Home() {
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-  };
 
   return (
     <div className={styles.container}>
@@ -54,22 +43,6 @@ function Home() {
   <MoreAboutNazarenes />
   {/* More content */}
 </div>
-
-      {/* Address Section with Google Map */}
-      <div className={styles.addressSection}>
-        <h3 className={styles.addressHeader}>Church Address</h3>
-        <p>Location: 41396 Barbourfields, Bulawayo, Zimbabwe</p>
-        <div className={styles.mapContainer}>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=...your_google_map_embed_link_here..."
-            width="200"
-            height="150"
-            allowFullScreen=""
-            loading="lazy"
-            title="Church Location"
-          ></iframe>
-        </div>
-      </div>
 
       <Footer />
     </div>

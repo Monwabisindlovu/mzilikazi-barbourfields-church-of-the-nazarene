@@ -14,19 +14,19 @@
 
 .more-about-grid {
   display: flex;
-  justify-content: space-between; /* Distribute cards across available space */
-  flex-wrap: nowrap; /* Force row on large screens */
-  gap: 1rem; /* Add space between the cards */
-  padding: 0 1rem; /* Slight padding inside container */
+  justify-content: space-between;
+  flex-wrap: nowrap; /* Horizontal on large screens */
+  gap: 1rem;
+  padding: 0 1rem;
 }
 
 .more-about-card {
   flex: 1;
   min-width: 0;
-  height: 200px;
+  aspect-ratio: 3 / 2; /* ✅ Maintain consistent shape */
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; /* Make sure the image fills */
+  background-repeat: no-repeat;
   border-radius: 12px;
   text-decoration: none;
   position: relative;
@@ -35,6 +35,7 @@
   display: flex;
   align-items: flex-end;
   transition: transform 0.3s ease;
+  height: auto; /* ✅ Let aspect-ratio control height */
 }
 
 .more-about-card:hover {
@@ -48,7 +49,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* Don't block the image */
+  position: relative;
   background: none;
   z-index: 2;
 }
@@ -64,29 +65,30 @@
 
 /* Individual color backgrounds behind just the text */
 .overlay-core p {
-  background-color: rgba(30, 37, 233, 0.8); /* Deep blue */
+  background-color: rgba(30, 37, 233, 0.8);
   color: #fff;
 }
 
 .overlay-beliefs p {
-  background-color: rgba(33, 243, 51, 0.8); /* Bright green */
+  background-color: rgba(33, 243, 51, 0.8);
   color: #000;
 }
 
 .overlay-faith p {
-  background-color: rgba(239, 12, 31, 0.85); /* Strong red */
+  background-color: rgba(239, 12, 31, 0.85);
   color: #fff;
 }
 
-/* Responsive stacking on smaller screens */
+/* ✅ Responsive: stack vertically on small screens, maintain aspect ratio */
 @media (max-width: 768px) {
   .more-about-grid {
-    flex-wrap: wrap; /* Allow stacking on mobile */
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .more-about-card {
     width: 100%;
     max-width: 100%;
-    height: 160px; /* Adjust height for small screens */
+    /* No height needed — aspect-ratio handles it */
   }
 }
