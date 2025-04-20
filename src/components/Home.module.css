@@ -33,15 +33,15 @@
 .welcome h1 {
   font-size: 2.4rem;
   font-weight: 600;
-  color: rgba(19, 20, 35, 0.93);
+  color: rgba(18, 33, 247, 0.93);
   z-index: 10;
 }
 
 /* Welcome paragraph only */
 .welcome > p {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: rgba(14, 15, 30, 0.93); /* Green tone for welcome */
+  font-size: 2.2rem; /* increased from 1.8rem */
+  font-weight: 700;  /* made bold */
+  color: rgba(20, 35, 235, 0.93);
   z-index: 10;
 }
 
@@ -51,7 +51,7 @@
   text-align: center;
   padding: 10px;
   margin-top: 10px;
-  color: rgba(14, 15, 23, 0.93); /* fallback color if children don’t override */
+  color: rgba(14, 15, 23, 0.93);
   border-radius: 8px;
   max-width: 400px;
   margin-left: auto;
@@ -61,7 +61,7 @@
 /* Verse Reference (e.g., "Matthew 11:28") */
 .verseRef {
   font-weight: bold;
-  color: rgba(7, 9, 35, 0.95); /* updated to deep gray for better contrast */
+  color: rgba(7, 9, 35, 0.95);
   margin-bottom: 4px;
 }
 
@@ -69,45 +69,66 @@
 .verseText {
   font-size: 0.95rem;
   line-height: 1.4;
-  color:rgba(7, 9, 35, 0.95);/* distinct rich navy tone */
+  font-weight: 600; /* made bold */
+  color: rgba(7, 9, 35, 0.95);
 }
 
 
-/* Services & Address Section */
-.imageContainer {
+
+/* Services + Pastor Section */
+.servicesSection {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-  flex: 1;
-}
-
-.servicesAndAddress {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.services {
-  text-align: center;
-  color: #09090d;
-  background-color: rgba(28, 27, 27, 0.8);
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
   border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  gap: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* supports stacking on small screens */
 }
 
+/* Services Text Styles */
+.servicesText {
+  flex: 1;
+  text-align: center;
+  background-image: url('../assets/worship.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+  color: inherit;
+}
+
+/* Semi-transparent overlay for text readability */
+.servicesText::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  border-radius: 8px;
+  z-index: -1;
+}
+
+/* Services Header */
 .servicesHeader {
-  color: rgb(221, 232, 18);
-  font-size: 1.5rem;
+  color: rgb(255, 255, 102) !important; /* force header color */
+  font-size: 1.6rem;
   margin-bottom: 10px;
 }
 
-.services p {
-  color: #010217;
+/* Paragraph text inside service section */
+.servicesText p {
+  color: #f5f5f5 !important; /* light text for contrast */
   font-size: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
+
 
 .addressSection {
   text-align: center;
