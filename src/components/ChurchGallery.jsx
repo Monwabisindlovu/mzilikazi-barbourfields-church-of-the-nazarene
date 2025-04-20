@@ -4,11 +4,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import easterImg from '../assets/easter-service.jpg';
+import youthEvent from '../assets/youth-event.jpg.jpg'; // double-check filename
+
 const ChurchGallery = () => {
   const highlights = [
-    { type: 'image', src: '/assets/easter-service.jpg', caption: 'Easter Celebration 2025' },
-    { type: 'video', src: '/assets/worship-clip.mp4', caption: 'Praise & Worship' },
-    { type: 'image', src: '/assets/youth-event.jpg', caption: 'Youth Event Highlights' },
+    { src: easterImg, caption: "Children's Camp 2025" },
+    { src: youthEvent, caption: 'Youth Event Highlights' },
   ];
 
   return (
@@ -22,14 +24,12 @@ const ChurchGallery = () => {
       >
         {highlights.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="relative">
-              {item.type === 'image' ? (
-                <img src={item.src} alt={item.caption} className="w-full h-96 object-cover rounded-lg" />
-              ) : (
-                <video className="w-full h-96 object-cover rounded-lg" controls>
-                  <source src={item.src} type="video/mp4" />
-                </video>
-              )}
+            <div className="relative gallery-slide">
+              <img
+                src={item.src}
+                alt={item.caption}
+                className="gallery-img"
+              />
               <div className="absolute bottom-4 left-4 text-white bg-black bg-opacity-50 p-2 rounded">
                 {item.caption}
               </div>

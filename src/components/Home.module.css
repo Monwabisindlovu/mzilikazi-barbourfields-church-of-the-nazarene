@@ -39,9 +39,10 @@
 
 /* Welcome paragraph only */
 .welcome > p {
+  background-color: rgba(235, 239, 248, 0.93);
   font-size: 2.2rem; /* increased from 1.8rem */
   font-weight: 700;  /* made bold */
-  color: rgba(20, 35, 235, 0.93);
+  color: rgba(9, 9, 39, 0.93);
   z-index: 10;
 }
 
@@ -51,7 +52,7 @@
   text-align: center;
   padding: 10px;
   margin-top: 10px;
-  color: rgba(14, 15, 23, 0.93);
+  color: rgba(10, 31, 193, 0.93);
   border-radius: 8px;
   max-width: 400px;
   margin-left: auto;
@@ -60,17 +61,19 @@
 
 /* Verse Reference (e.g., "Matthew 11:28") */
 .verseRef {
+  background-color: rgba(235, 239, 248, 0.93);
   font-weight: bold;
-  color: rgba(7, 9, 35, 0.95);
+  color: rgba(25, 22, 62, 0.95);
   margin-bottom: 4px;
 }
 
 /* Verse Text (e.g., the actual quote) */
 .verseText {
+  background-color: rgba(235, 239, 248, 0.93);
   font-size: 0.95rem;
   line-height: 1.4;
   font-weight: 600; /* made bold */
-  color: rgba(7, 9, 35, 0.95);
+  color: rgb(21, 20, 20);
 }
 
 

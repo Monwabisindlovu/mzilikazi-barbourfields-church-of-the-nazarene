@@ -4,10 +4,7 @@ import styles from './Home.module.css';
 import Footer from '../components/Footer';
 import pastorImg from '../assets/pastor.jpg';
 
-// Sample image imports (replace with your actual ones)
-import event1 from '../assets/event1.jpg';
-import event2 from '../assets/event2.jpg';
-import event3 from '../assets/event3.jpg';
+
 
 function Home() {
   const sliderSettings = {
