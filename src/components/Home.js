@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import styles from './Home.module.css';
 import Footer from '../components/Footer';
 import pastorImg from '../assets/pastor.jpg';
+import MoreAboutNazarenes from '../components/MoreAboutNazarenes';
 
 
 
@@ -48,7 +49,11 @@ function Home() {
 </p>
   </div>
 </div>
-
+<div>
+  {/* Some other components */}
+  <MoreAboutNazarenes />
+  {/* More content */}
+</div>
 
       {/* Address Section with Google Map */}
       <div className={styles.addressSection}>
