@@ -42,7 +42,7 @@
 .welcome > p {
   font-size: 2.2rem; /* increased from 1.8rem */
   font-weight: 700;  /* made bold */
-  color:  rgba(8, 18, 169, 0.93);
+  color:  rgba(8, 13, 58, 0.93);
   z-index: 10;
 }
 
@@ -72,7 +72,7 @@
   font-size: 0.95rem;
   line-height: 1.4;
   font-weight: 600; /* made bold */
-  color: rgb(117, 25, 6); /* Charcoal Gray */
+  color: rgb(15, 14, 13); /* Charcoal Gray */
 }
 
 
@@ -195,7 +195,7 @@
   max-width: 300px;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(11, 5, 5, 0.1);
 }
 
 .pastorName {
