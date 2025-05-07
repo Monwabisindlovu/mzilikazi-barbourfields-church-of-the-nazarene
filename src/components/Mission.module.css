@@ -1,8 +1,8 @@
-/* Base Styles */
+/* Container Section */
 .container {
   position: relative;
   text-align: center;
-  padding: 20px;
+  padding: 100px 20px 20px;
   background: url('https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0021.jpg?raw=true') no-repeat center center;
   background-size: cover;
   border-radius: 8px;
@@ -24,12 +24,14 @@
   z-index: 1;
 }
 
+/* Text Layout */
 .textContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
+  flex-wrap: wrap;
 }
 
 .image {
@@ -44,6 +46,7 @@
   max-width: 600px;
   font-size: 1.2em;
   color: #0f24e2;
+  text-align: left;
 }
 
 .title {
@@ -51,31 +54,8 @@
   margin-bottom: 20px;
 }
 
-.rotatingText {
-  position: relative;
-  height: 50px; /* Ensure this matches the height of the rotating elements */
-  overflow: hidden;
-}
-
-.rotatingText span {
-  display: block;
-  height: 50px; /* Ensure this matches the height of the rotating container */
-  line-height: 50px; /* Adjust line-height to match height */
-  animation: rotateText 10s infinite;
-}
-
-@keyframes rotateText {
-  0% { transform: translateY(0); }
-  20% { transform: translateY(-100%); }
-  40% { transform: translateY(-200%); }
-  60% { transform: translateY(-300%); }
-  80% { transform: translateY(-400%); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes moveBackground {
-  0% { background-position: 0 0; }
-  100% { background-position: 10px 10px; }
+.statement {
+  margin-top: 10px;
 }
 
 .link {
@@ -85,12 +65,79 @@
   text-decoration: underline;
 }
 
-/* Media Queries for responsiveness */
+/* Rotating Word Animation */
+.rotatingText {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 10px;
+}
 
-/* Mobile Devices */
+.word {
+  position: absolute;
+  opacity: 0;
+  animation: rotateWords 20s linear infinite;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transform: scale(0.8);
+}
+
+.word1 {
+  animation-delay: 0s;
+  color: goldenrod;
+}
+
+.word2 {
+  animation-delay: 5s;
+  color: black;
+}
+
+.word3 {
+  animation-delay: 10s;
+  color: #1d3557; /* dark blue */
+}
+
+.word4 {
+  animation-delay: 15s;
+  color: #b5179e; /* violet */
+}
+
+@keyframes rotateWords {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotateX(90deg);
+  }
+  5% {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  25% {
+    opacity: 0;
+    transform: scale(0.8) rotateX(-90deg);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Moving Background Animation */
+@keyframes moveBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: 10px 10px; }
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 600px) {
-  .container {
-    padding: 10px;
+  .textContainer {
+    flex-direction: column;
   }
 
   .text {
@@ -104,61 +151,14 @@
 
   .image {
     width: 100px;
-    margin-right: 10px;
+    margin-bottom: 15px;
   }
 
-  .rotatingText span {
-    height: 40px; /* Adjust height for smaller screens */
-    line-height: 40px; /* Adjust line-height */
-  }
-}
-
-/* Tablets */
-@media (min-width: 601px) and (max-width: 900px) {
-  .container {
-    padding: 15px;
+  .rotatingText {
+    height: 40px;
   }
 
-  .text {
-    font-size: 1.1em;
-  }
-
-  .title {
-    font-size: 1.75em;
-  }
-
-  .image {
-    width: 120px;
-    margin-right: 15px;
-  }
-
-  .rotatingText span {
-    height: 45px; /* Adjust height for tablets */
-    line-height: 45px; /* Adjust line-height */
-  }
-}
-
-/* Desktop */
-@media (min-width: 901px) {
-  .container {
-    padding: 20px;
-  }
-
-  .text {
-    font-size: 1.2em;
-  }
-
-  .title {
-    font-size: 2em;
-  }
-
-  .image {
-    width: 150px;
-    margin-right: 20px;
-  }
-
-  .rotatingText span {
-    height: 50px;
-    line-height: 50px;
+  .word {
+    font-size: 1.2rem;
   }
 }

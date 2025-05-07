@@ -1,60 +1,142 @@
-
-/* Container styles */
 .container {
-  padding: 20px;
-  background: linear-gradient(135deg, rgba(230, 233, 232, 0.8), rgba(178, 223, 219, 0.8)); /* Gradient background with some transparency */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 80px 20px 40px;
+  background: linear-gradient(135deg, #e3f2fd, #e0f7fa);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin: 20px auto;
-  max-width: 600px; /* Constrain width for better appearance */
+  margin: 40px auto;
+  max-width: 900px;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .title {
-  font-size: 2.5rem; /* Larger font size for the title */
-  color: #e61e13;
+  font-size: 2rem;
+  color: #004d40;
   margin-bottom: 10px;
 }
 
 .description {
-  font-size: 1.2rem; /* Slightly larger description */
-  color: #d315b7; /* A softer color for description */
-  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 40px;
 }
 
 .eventList {
-  list-style-type: none; /* Remove default bullet points */
-  padding: 0; /* Remove padding */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .eventItem {
-  font-size: 1.2rem; /* Event text size */
-  color: #004d40; /* Consistent color */
-  margin: 10px 0; /* Space between items */
-  padding: 15px; /* Increased padding for a more spacious look */
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background for event items */
-  border: 1px solid #004d40; /* Border around event items */
-  border-radius: 5px; /* Rounded corners */
-  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition */
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideUp 0.6s ease forwards;
+  opacity: 0;
+  position: relative;
+  min-height: 180px;
 }
 
 .eventItem:hover {
-  transform: translateY(-5px); /* Slightly lift on hover */
-  cursor: pointer; /* Pointer cursor */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .title {
-    font-size: 2rem; /* Responsive font size for title */
-  }
+.eventName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00695c;
+  margin-bottom: 10px;
+  display: block;
+}
 
-  .description {
-    font-size: 1rem; /* Responsive font size for description */
-  }
+.eventMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
 
-  .eventItem {
-    font-size: 1rem; /* Responsive font size for event items */
+.tag {
+  background-color: #e1f5fe;
+  color: #0277bd;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.date {
+  background-color: #fff3e0;
+  color: #e65100;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 6px 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.button:hover {
+  background-color: #333;
+}
+
+.ctaWrapper {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.ctaButton {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  background-color: #00695c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #004d40;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

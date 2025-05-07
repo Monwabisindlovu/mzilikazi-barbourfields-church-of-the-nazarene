@@ -1,109 +1,108 @@
 /* Base Styles */
 .container {
-  padding: 20px;
-  background-color: rgba(234, 244, 244, 0.9); /* Light background with some transparency */
+  padding: 100px 20px 20px 20px; /* 100px top padding to offset fixed header */
+  background-color: rgba(203, 214, 214, 0.9);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  max-width: 800px; /* Wider for better appearance */
-  margin: 30px auto; /* Center and add margin */
+  max-width: 800px;
+  margin: 30px auto;
 }
 
 .title {
-  font-size: 2.5rem; /* Larger title font */
-  color: #004d40; /* Dark green */
+  font-size: 2.5rem;
+  color: #004d40;
   text-align: center;
-  margin-bottom: 15px; /* Spacing below title */
-  text-transform: uppercase; /* Uppercase for emphasis */
-  letter-spacing: 1px; /* Spacing between letters */
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .intro {
   font-size: 1.1rem;
-  color: #333; /* Darker text for better readability */
-  margin-bottom: 20px; /* Spacing below intro paragraph */
-  text-align: center; /* Center align intro */
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .visionList {
-  list-style-type: disc; /* Bullet points */
-  margin-left: 40px; /* Indent list */
-  margin-bottom: 20px; /* Spacing below list */
+  list-style-type: disc;
+  margin-left: 40px;
+  margin-bottom: 20px;
 }
 
 li {
-  font-size: 1.1rem; /* Larger font for list items */
-  color: #004d40; /* Consistent color */
-  margin-bottom: 10px; /* Space between items */
+  font-size: 1.1rem;
+  color: #004d40;
+  margin-bottom: 10px;
 }
 
 .conclusion {
   font-size: 1rem;
-  color: #555; /* Softer color for conclusion */
-  margin-bottom: 20px; /* Spacing below conclusion */
+  color: #555;
+  margin-bottom: 20px;
 }
 
 .readMoreLink {
   display: block;
   text-align: center;
   margin-top: 20px;
-  color: #07362e; /* Darker link color */
-  font-size: 1.1rem; /* Slightly larger font for links */
+  color: #07362e;
+  font-size: 1.1rem;
   text-decoration: underline;
 }
 
-/* Hover effect for link */
 .readMoreLink:hover {
-  color: #004d40; /* Change color on hover */
-  text-decoration: none; /* Remove underline on hover */
+  color: #004d40;
+  text-decoration: none;
 }
 
-/* Media Queries for responsiveness */
+/* Media Queries */
 
 /* Mobile Devices */
 @media (max-width: 600px) {
   .container {
-    padding: 15px;
+    padding: 100px 15px 15px 15px; /* Keep top padding */
   }
 
   .title {
-    font-size: 2rem; /* Adjusted size */
+    font-size: 2rem;
   }
 
   .intro, .conclusion, .readMoreLink {
-    font-size: 0.9rem; /* Smaller for mobile */
+    font-size: 0.9rem;
   }
 
   .visionList {
-    margin-left: 20px; /* Less indentation */
+    margin-left: 20px;
   }
 }
 
 /* Tablets */
 @media (min-width: 601px) and (max-width: 900px) {
   .container {
-    padding: 18px;
+    padding: 100px 18px 18px 18px; /* Keep top padding */
   }
 
   .title {
-    font-size: 2.2rem; /* Adjusted size */
+    font-size: 2.2rem;
   }
 
   .visionList {
-    margin-left: 30px; /* Medium indentation */
+    margin-left: 30px;
   }
 }
 
 /* Desktop */
 @media (min-width: 901px) {
   .container {
-    padding: 20px;
+    padding: 100px 20px 20px 20px; /* Keep top padding */
   }
 
   .title {
-    font-size: 2.5rem; /* Revert to original size */
+    font-size: 2.5rem;
   }
 
   .visionList {
-    margin-left: 40px; /* Original indentation */
+    margin-left: 40px;
   }
 }
