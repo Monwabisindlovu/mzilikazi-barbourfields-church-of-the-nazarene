@@ -1,23 +1,32 @@
-/* Base Styles */
 .container {
-  padding: 100px 20px 20px 20px; /* 100px top padding to offset fixed header */
-  background-color: rgba(203, 214, 214, 0.9);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  max-width: 800px;
-  margin: 30px auto;
-}
-
-.title {
-  font-size: 2.5rem;
-  color: #004d40;
+  padding: 80px 20px 40px;
+  background: linear-gradient(135deg, #e3f2fd, #e0f7fa);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  margin: 40px auto;
+  max-width: 900px;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.intro {
+/* Hero Banner */
+.heroBanner {
+  background: url('../assets/banner-church.jpg') center/cover no-repeat;
+  padding: 60px 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: white;
+}
+
+.heroTitle {
+  font-size: 2.8rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.intro,
+.conclusion {
   font-size: 1.1rem;
   color: #333;
   margin-bottom: 20px;
@@ -25,84 +34,65 @@
 }
 
 .visionList {
-  list-style-type: disc;
-  margin-left: 40px;
-  margin-bottom: 20px;
+  list-style: none;
+  padding: 0;
 }
 
-li {
-  font-size: 1.1rem;
-  color: #004d40;
-  margin-bottom: 10px;
+.visionCard {
+  background: #ffffff;
+  border-left: 6px solid #004d40;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
 
-.conclusion {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
+.visionCard:hover {
+  transform: translateY(-4px);
 }
 
+.highlight {
+  color: #00796b;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* Read More Link */
 .readMoreLink {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  color: #07362e;
+  display: inline-block;
+  margin: 20px auto 0;
+  color: #004d40;
   font-size: 1.1rem;
   text-decoration: underline;
+  text-align: center;
+  transition: color 0.3s ease;
 }
 
 .readMoreLink:hover {
-  color: #004d40;
+  color: #00251a;
   text-decoration: none;
 }
 
-/* Media Queries */
-
-/* Mobile Devices */
+/* Responsive Styles */
 @media (max-width: 600px) {
   .container {
-    padding: 100px 15px 15px 15px; /* Keep top padding */
+    padding: 80px 15px 30px;
   }
 
-  .title {
+  .heroTitle {
     font-size: 2rem;
   }
 
-  .intro, .conclusion, .readMoreLink {
-    font-size: 0.9rem;
+  .intro,
+  .conclusion,
+  .readMoreLink {
+    font-size: 0.95rem;
   }
 
-  .visionList {
-    margin-left: 20px;
-  }
-}
-
-/* Tablets */
-@media (min-width: 601px) and (max-width: 900px) {
-  .container {
-    padding: 100px 18px 18px 18px; /* Keep top padding */
-  }
-
-  .title {
-    font-size: 2.2rem;
-  }
-
-  .visionList {
-    margin-left: 30px;
-  }
-}
-
-/* Desktop */
-@media (min-width: 901px) {
-  .container {
-    padding: 100px 20px 20px 20px; /* Keep top padding */
-  }
-
-  .title {
-    font-size: 2.5rem;
-  }
-
-  .visionList {
-    margin-left: 40px;
+  .visionCard {
+    font-size: 0.95rem;
+    padding: 12px 15px;
   }
 }

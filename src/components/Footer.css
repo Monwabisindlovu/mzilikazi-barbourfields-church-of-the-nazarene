@@ -1,8 +1,8 @@
 /* Footer Styles */
 .footer {
-  background-color: rgba(28, 31, 71, 0.93); /* Same background as header */
-  color: #ffffff !important; /* Force white text with !important */
-  padding: 0.25rem 1rem; /* Further reduced padding for even smaller footer height */
+  background-color: rgba(28, 31, 71, 0.93);
+  color: #ffffff !important;
+  padding: 0.3rem 0.8rem; /* Slightly reduced padding */
   text-align: left;
   position: relative;
 }
@@ -14,29 +14,28 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem; /* Reduced gap between items */
+  gap: 0.5rem; /* Smaller gap between columns */
 }
 
 .church-description {
-  flex: 1 1 30%; /* Reduced width */
-  font-size: 0.85rem; /* Slightly smaller font */
-  line-height: 1.4;
-  color: #ffffff !important; /* Force white color with !important */
+  flex: 1 1 30%;
+  font-size: 0.75rem; /* Smaller font size */
+  line-height: 1.3;
+  color: #ffffff !important;
 }
 
-/* Force white text in any descendants of the .church-description */
 .church-description * {
   color: #ffffff !important;
 }
 
 .quick-links {
-  flex: 1 1 30%; /* Reduced width */
+  flex: 1 1 30%;
 }
 
 .quick-links h4 {
-  margin-bottom: 0.2rem; /* Reduced margin-bottom */
-  font-size: 1rem; /* Slightly smaller header font */
-  color: #ffffff; /* White for the "Quick Links" header */
+  margin-bottom: 0.15rem;
+  font-size: 0.9rem;
+  color: #ffffff;
 }
 
 .quick-links ul {
@@ -46,52 +45,63 @@
 }
 
 .quick-links li {
-  margin-bottom: 0.1rem; /* Reduced margin-bottom */
+  margin-bottom: 0.1rem;
 }
 
 .quick-links li a {
-  color: #fbbf24; /* Yellow for the links */
+  color: #fbbf24;
   text-decoration: none;
+  font-size: 0.75rem;
 }
 
 .quick-links li a:hover {
-  color: #ffffff; /* White on hover */
+  color: #ffffff;
 }
 
 .map-container {
   position: absolute;
-  top: 0.25rem; /* Reduced top margin */
-  right: 0.25rem; /* Reduced right margin */
-  width: 1.2cm; /* Reduced width */
-  height: 1.2cm; /* Reduced height */
+  top: 0.25rem;
+  right: 0.25rem;
+  width: 1.2cm;
+  height: 1.0cm;
 }
 
 .map-container iframe {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 6px;
   border: none;
 }
 
 .church-info {
   flex: 1 1 100%;
-  margin-top: 0.25rem; /* Reduced top margin */
+  margin-top: 0.2rem;
 }
 
 .church-info h4 {
-  margin-bottom: 0.2rem; /* Reduced margin-bottom */
-  font-size: 1rem; /* Slightly smaller header font */
-  color: #ffffff; /* White for the church address header */
+  margin-bottom: 0.15rem;
+  font-size: 0.9rem;
+  color: #ffffff;
 }
 
 .church-info p {
-  color: #ffffff; /* White for church description text */
+  color: #ffffff;
+  font-size: 0.75rem;
 }
 
 .footer-credit {
-  font-size: 0.8rem; /* Slightly smaller font */
-  margin-top: 0.25rem; /* Reduced margin-top */
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
   color: #aaa;
   text-align: center;
   width: 100%;
+}
+@media (min-width: 768px) {
+  .footer-content {
+    gap: 2rem;
+  }
+
+  .church-description {
+    margin-right: 1.5rem;
+  }
 }

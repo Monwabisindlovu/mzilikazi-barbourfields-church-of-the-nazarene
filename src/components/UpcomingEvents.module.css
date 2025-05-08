@@ -38,7 +38,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: slideUp 0.6s ease forwards;
   opacity: 0;
-  position: relative;
   min-height: 180px;
 }
 
@@ -47,57 +46,64 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.eventName {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #00695c;
+.eventImage {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
   margin-bottom: 10px;
-  display: block;
+}
+
+.eventHeader {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #004d40;
+  margin: 5px 0;
+}
+
+.eventName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
 }
 
 .eventMeta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  font-size: 0.9rem;
+  margin: 5px 0;
+  font-size: 0.85rem;
+  color: #777;
 }
 
 .tag {
-  background-color: #e1f5fe;
-  color: #0277bd;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  background-color: #e0f7fa;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
 .date {
-  background-color: #fff3e0;
-  color: #e65100;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  color: #666;
+}
+
+.eventDescription {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 10px 0;
 }
 
 .button {
-  margin-top: 20px;
+  background-color: #00695c;
+  color: white;
   padding: 6px 12px;
-  background-color: #000;
-  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 0.75rem;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
+  margin-top: 10px; /* Spacing from description */
 }
 
 .button:hover {
-  background-color: #333;
+  background-color: #004d40;
 }
 
 .ctaWrapper {

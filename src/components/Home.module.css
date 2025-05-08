@@ -12,13 +12,12 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 /* Welcome Section */
 .welcome {
   text-align: center;
   padding: 20px;
   border-radius: 8px;
-  background-image: url('../assets/welcombackground.jpg');
+  background-color:rgb(235, 243, 243);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -27,9 +26,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 80px; /* Adjusted margin-top to create space below the fixed header */
+  margin-top: 80px;
   flex-direction: column;
 }
+
 
 .welcome h1 {
   font-size: 2.4rem;
@@ -72,7 +72,7 @@
   font-size: 0.95rem;
   line-height: 1.4;
   font-weight: 600; /* made bold */
-  color: rgb(15, 14, 13); /* Charcoal Gray */
+  color: rgb(10, 7, 176); /* Charcoal Gray */
 }
 
 

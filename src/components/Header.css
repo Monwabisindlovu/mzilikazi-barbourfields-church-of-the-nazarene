@@ -110,15 +110,15 @@ header {
   right: -100%;
   width: 70%;
   max-width: 280px;
-  height: 100%;
-  background-color: rgb(28, 29, 69); /* Black background */
+  height: 100vh; /* Full height of the screen */
+  background-color: rgb(28, 29, 69);
   box-shadow: -2px 0 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   padding-top: 5rem;
   transition: right 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Enable scrolling */
+  overflow-y: auto; /* Scroll if content exceeds height */
 }
 
 /* Show menu when open */
@@ -238,5 +238,15 @@ header {
   .dropdown-menu li a {
     font-size: 0.8rem; /* Even smaller text */
     padding: 0.75rem;
+  }
+}
+@media (max-width: 480px) {
+  .dropdown-menu {
+    width: 25%; /* Make it 1/4 of screen width */
+    max-width: none;
+    top: 0;
+    bottom: 0;
+    height: 100vh; /* Full screen height */
+    overflow-y: auto; /* Enable scrolling if needed */
   }
 }
