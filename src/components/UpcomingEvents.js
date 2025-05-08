@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './UpcomingEvents.module.css';
 
-import christmasSticker from '../assets/xmas-sticker.avif';
-import sportsDay from '../assets/sportsday.avif';
+import christmasSticker from '../assets/xmas-sticker.jpg';
+import sportsDay from '../assets/sportsday.jpg';
 import prisonerWithBible from '../assets/prisonerwithbible (1).jpg';
 import nightPrayer from '../assets/nightprayer.jpg';
 import leadershipSeminar from '../assets/Leadership Seminar.jpg';
