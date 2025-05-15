@@ -1,30 +1,31 @@
-/* Container Section */
 .container {
   position: relative;
   text-align: center;
   padding: 100px 20px 20px;
-  background: url('https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/IMG-20240903-WA0021.jpg?raw=true') no-repeat center center;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
+  background-attachment: scroll;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  animation: moveBackground 20s linear infinite;
   min-height: 100vh;
+  transition: background-position 0.3s ease, background-size 0.3s ease;
 }
 
+
+/* Optional dark overlay to improve text visibility */
 .container::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(225, 223, 230, 0.5);
-  filter: blur(8px);
+  background: rgba(208, 232, 252, 0.4); /* Adjust as needed */
   z-index: 1;
 }
 
-/* Text Layout */
+/* Content container above overlay */
 .textContainer {
   display: flex;
   align-items: center;
@@ -32,8 +33,11 @@
   position: relative;
   z-index: 2;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Mission image */
 .image {
   width: 150px;
   height: auto;
@@ -42,30 +46,33 @@
   box-shadow: 0 4px 8px rgba(26, 13, 167, 0.1);
 }
 
+/* Text styling */
 .text {
   max-width: 600px;
   font-size: 1.2em;
-  color: #0f24e2;
+  color:rgb(12, 76, 194);
   text-align: left;
 }
 
 .title {
   font-size: 2em;
   margin-bottom: 20px;
+  color:rgb(9, 149, 18);
 }
 
 .statement {
   margin-top: 10px;
 }
 
+/* Link to global site */
 .link {
   display: block;
   margin-top: 20px;
-  color: #0d28c1;
+  color:rgb(12, 16, 221);
   text-decoration: underline;
 }
 
-/* Rotating Word Animation */
+/* Rotating Text Container */
 .rotatingText {
   position: relative;
   height: 50px;
@@ -88,7 +95,7 @@
 
 .word1 {
   animation-delay: 0s;
-  color: goldenrod;
+  color: red;
 }
 
 .word2 {
@@ -98,14 +105,15 @@
 
 .word3 {
   animation-delay: 10s;
-  color: #1d3557; /* dark blue */
+  color: #1d3557;
 }
 
 .word4 {
   animation-delay: 15s;
-  color: #b5179e; /* violet */
+  color: #b5179e;
 }
 
+/* Keyframes for rotating words */
 @keyframes rotateWords {
   0% {
     opacity: 0;
@@ -128,21 +136,22 @@
   }
 }
 
-/* Moving Background Animation */
-@keyframes moveBackground {
-  0% { background-position: 0 0; }
-  100% { background-position: 10px 10px; }
-}
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 10px;
+    background-position: center top;
+  }
 
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
   .textContainer {
     flex-direction: column;
+    align-items: center;
   }
 
   .text {
     font-size: 1em;
     padding: 0 10px;
+    text-align: center;
   }
 
   .title {
@@ -151,14 +160,22 @@
 
   .image {
     width: 100px;
-    margin-bottom: 15px;
+    margin: 0 auto 20px;
   }
 
   .rotatingText {
     height: 40px;
+    justify-content: center;
   }
 
   .word {
     font-size: 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
   }
 }

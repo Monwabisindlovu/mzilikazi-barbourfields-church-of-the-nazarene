@@ -60,7 +60,7 @@ function Leadership() {
 
         <div className={styles.leaderCard}>
           <img
-            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/mr%20ncube.jpg?raw=true"
+            src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/mrs%20ncube.jpg?raw=true"
             alt="Chairman Mr. N. Ncube"
             className={styles.leaderImage}
           />

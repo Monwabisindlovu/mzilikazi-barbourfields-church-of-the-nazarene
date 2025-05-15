@@ -1,9 +1,13 @@
 import React from 'react';
 import styles from './Mission.module.css';
+import missionImage from '../assets/mission.jpg'; // adjust path if needed
 
 function Mission() {
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ backgroundImage: `url(${missionImage})` }}
+    >
       <div className={styles.textContainer}>
         <img
           src="https://github.com/Monwabisindlovu/portfolio-landing_page/blob/main/images/statement-of-mission.png?raw=true"
