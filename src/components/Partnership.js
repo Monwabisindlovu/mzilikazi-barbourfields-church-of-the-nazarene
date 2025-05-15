@@ -1,31 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Partnership.module.css';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// Environment variables
+const SERVICE_ID       = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID      = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const AUTO_REPLY_ID    = process.env.REACT_APP_EMAILJS_AUTO_REPLY_TEMPLATE_ID;
+const PUBLIC_KEY       = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
 function Collaboration() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+  useEffect(() => {
+    if (PUBLIC_KEY) {
+      emailjs.init(PUBLIC_KEY);
+      console.log("EmailJS initialized with Public Key:", PUBLIC_KEY);
+    } else {
+      console.error("EmailJS Public Key is missing.");
+      console.log("Env value:", process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    emailjs.send(
-      'your_service_id',     // Replace with actual ID
-      'your_template_id',    // Replace with actual template ID
-      formData,
-      'your_user_id'         // Replace with actual user/public key
-    ).then(() => {
-      toast.success('Message sent successfully!');
+  if (!SERVICE_ID || !TEMPLATE_ID || !AUTO_REPLY_ID || !PUBLIC_KEY) {
+    toast.error("Email service configuration is missing.");
+    return;
+  }
+
+  // Send message to admin
+  emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+    .then(() => {
+      // Send auto-reply to user
+      const autoReplyParams = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        time: new Date().toLocaleString()
+      };
+      return emailjs.send(SERVICE_ID, AUTO_REPLY_ID, autoReplyParams, PUBLIC_KEY);
+    })
+    .then(() => {
+      toast.success('Message sent & confirmation email delivered!');
       setFormData({ name: '', email: '', message: '' });
-    }).catch(() => {
-      toast.error('Something went wrong. Try again!');
+    })
+    .catch((err) => {
+      console.error('EmailJS error:', err);
+      toast.error('Something went wrong. Please try again.');
     });
-  };
+};
+
 
   return (
     <div className={styles.section}>
@@ -51,7 +82,9 @@ function Collaboration() {
           </div>
         </div>
 
-        <p className={styles.formIntro}>Fill out the form below to get involved or ask questions:</p>
+        <p className={styles.formIntro}>
+          Fill out the form below to get involved or ask questions:
+        </p>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
           <input
             type="text"
