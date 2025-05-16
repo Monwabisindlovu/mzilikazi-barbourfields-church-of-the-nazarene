@@ -2,9 +2,8 @@
 .footer {
   background-color: rgba(28, 31, 71, 0.93);
   color: #ffffff !important;
-  padding: 0.3rem 0.8rem; /* Slightly reduced padding */
+  padding: 0.5rem 0.8rem 0.3rem;
   text-align: left;
-  position: relative;
 }
 
 .footer-content {
@@ -14,14 +13,15 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 0.5rem; /* Smaller gap between columns */
+  gap: 1rem;
 }
 
 .church-description {
   flex: 1 1 30%;
-  font-size: 0.75rem; /* Smaller font size */
-  line-height: 1.3;
+  font-size: 0.75rem;
+  line-height: 1.2;
   color: #ffffff !important;
+  margin-bottom: 0.3rem;
 }
 
 .church-description * {
@@ -33,19 +33,22 @@
 }
 
 .quick-links h4 {
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.3rem;
   font-size: 0.9rem;
   color: #ffffff;
 }
 
 .quick-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .quick-links li {
-  margin-bottom: 0.1rem;
+  flex: 1 1 45%; /* Two-column layout */
 }
 
 .quick-links li a {
@@ -58,35 +61,22 @@
   color: #ffffff;
 }
 
-.map-container {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.25rem;
-  width: 1.2cm;
-  height: 1.0cm;
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 100%;
-  border-radius: 6px;
-  border: none;
-}
-
 .church-info {
   flex: 1 1 100%;
   margin-top: 0.2rem;
 }
 
 .church-info h4 {
-  margin-bottom: 0.15rem;
-  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.85rem;
   color: #ffffff;
 }
 
 .church-info p {
   color: #ffffff;
   font-size: 0.75rem;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .footer-credit {
@@ -96,12 +86,20 @@
   text-align: center;
   width: 100%;
 }
-@media (min-width: 768px) {
+
+/* Responsive Cleanup */
+@media (max-width: 768px) {
   .footer-content {
-    gap: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
   }
 
-  .church-description {
-    margin-right: 1.5rem;
+  .quick-links ul {
+    gap: 0.2rem 1rem;
+  }
+
+  .quick-links li {
+    flex: 1 1 48%;
   }
 }

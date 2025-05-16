@@ -17,19 +17,25 @@ function Footer() {
         <div className="quick-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="https://www.nazarene.org/manual" target="_blank" rel="noopener noreferrer">Church Manual</a></li>
-            {/* Updated to use mailto for email */}
-            <li><a href="mailto:innomsipha@gmail.com">innomsipha@gmail.com</a></li>
+            <li>
+              <a href="https://www.nazarene.org/manual" target="_blank" rel="noopener noreferrer">
+                Church Manual
+              </a>
+            </li>
+            <li>
+              <a href="mailto:innomsipha@gmail.com">innomsipha@gmail.com</a>
+            </li>
+            <li>
+              <a href="/contact-us" className="whitespace-nowrap px-1">
+                Contact Us
+              </a>
+            </li>
+            <li>
+              <a href="/partnership" className="whitespace-nowrap px-1">
+                Partnership
+              </a>
+            </li>
           </ul>
-        </div>
-
-        <div className="map-container">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=...your_google_map_embed_link_here..."
-            allowFullScreen=""
-            loading="lazy"
-            title="Church Location"
-          ></iframe>
         </div>
 
         <div className="church-info">
@@ -38,11 +44,10 @@ function Footer() {
         </div>
 
         <p className="footer-credit">
-  <span>© 2024 Mzilikazi/Barbourfields Church of the Nazarene. All rights reserved.</span>
-  <br />
-  <span>Designed by Monwabisindlovu</span>
-</p>
-
+          <span>© 2024 Mzilikazi/Barbourfields Church of the Nazarene. All rights reserved.</span>
+          <br />
+          <span>Designed by Monwabisindlovu</span>
+        </p>
       </div>
     </footer>
   );

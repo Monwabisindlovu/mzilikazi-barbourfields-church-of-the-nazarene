@@ -1,28 +1,11 @@
 /* Base Container */
 .container {
-  background: linear-gradient(145deg, rgb(230, 232, 234), #e8eaf6);
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
   min-height: 100vh;
-  padding: 40px 16px;
+  padding: 100px 20px 40px;
   font-family: 'Segoe UI', sans-serif;
   box-sizing: border-box;
   overflow-x: hidden;
-}
-
-/* Card Wrapper for Each Section */
-.card {
-  background: linear-gradient(145deg, rgb(230, 232, 234), rgb(227, 230, 231));
-  border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  margin: 0 auto 30px auto;
-  padding: 25px;
-  max-width: 1200px;
-  width: 100%;
-  box-sizing: border-box;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
 }
 
 /* Fade-in Animation */
@@ -44,41 +27,50 @@
 /* Welcome Section */
 .welcome {
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .heading {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #2c3e50;
-  margin-bottom: 10px;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  background: linear-gradient(90deg, #5f72bd, #9b23ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
 }
 
 .introText {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 20px;
+  font-size: 1.15rem;
+  color: #3a3a3a;
+  margin-bottom: 28px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Verse Styling */
 .verseBox {
-  background-color: rgba(236, 240, 253, 0.8);
-  border-left: 4px solid #2d5eff;
-  padding: 12px 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  margin: 0 auto;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.45);
+  border-left: 4px solid #6a5acd;
+  padding: 16px 24px;
+  border-radius: 10px;
+  max-width: 540px;
+  margin: 0 auto 40px;
   font-style: italic;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .verseRef {
-  font-weight: bold;
-  color: #1c1c4d;
-  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333366;
+  margin-bottom: 6px;
 }
 
 .verseText {
-  color: #0f0f8d;
-  font-size: 1rem;
+  color: #1a237e;
+  font-size: 1.05rem;
   font-weight: 500;
 }
 
@@ -87,77 +79,85 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
-  margin-top: 20px;
+  gap: 40px;
+  margin-top: 30px;
+  padding: 0 10px;
 }
 
-/* Shared style for both service and pastor cards */
+/* Shared Style for Items */
 .servicesText,
 .pastorSection {
   flex: 1 1 320px;
   max-width: 480px;
   min-width: 280px;
-  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
   color: #1f2937;
-  padding: 24px;
-  border-radius: 16px;
+  padding: 28px;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .servicesText:hover,
 .pastorSection:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .servicesHeader {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 18px;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 20px;
   color: #111827;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .servicesText p {
-  font-size: 1rem;
-  margin-bottom: 10px;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  line-height: 1.7;
   color: #374151;
 }
 
 /* Pastor Specific */
 .pastorImage {
   width: 100%;
-  max-width: 250px;
-  border-radius: 10px;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
+  max-width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  margin: 0 auto 16px;
 }
 
 .pastorName {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #2c2c2c;
   margin-top: 10px;
+  font-weight: 600;
 }
 
 .pastorQuote {
-  font-size: 1rem;
-  color: #444;
+  font-size: 1.05rem;
+  color: #4a4a4a;
   font-style: italic;
+  margin-top: 10px;
 }
 
 /* Responsive Fixes */
 @media (max-width: 768px) {
   .container {
-    padding: 30px 12px;
+    padding: 40px 16px;
   }
 
   .heading {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .introText {
@@ -165,13 +165,13 @@
   }
 
   .servicesHeader {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .servicesSection {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
   }
 
   .servicesText,
