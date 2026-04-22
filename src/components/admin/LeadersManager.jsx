@@ -259,7 +259,7 @@ export default function LeadersManager() {
                         : [update],
                 }))
               }
-              accept="image/*"
+              accept="image/*,video/*"
             />
 
             <Input

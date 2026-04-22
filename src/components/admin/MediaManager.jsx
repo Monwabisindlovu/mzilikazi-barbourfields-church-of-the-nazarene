@@ -296,7 +296,7 @@ export default function MediaManager() {
                         : [{ url: update }],
                 }))
               }
-              accept="image/*"
+              accept="image/*,video/*"
             />
 
             <div className="flex items-center gap-2">

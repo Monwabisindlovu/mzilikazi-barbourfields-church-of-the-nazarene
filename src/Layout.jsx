@@ -55,7 +55,7 @@ export default function Layout({ children }) {
       {/* Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+          isScrolled ? 'bg-white shadow-lg' : 'bg-black/30 backdrop-blur-md'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4">
@@ -63,7 +63,7 @@ export default function Layout({ children }) {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
               <img
-                src="https://raw.githubusercontent.com/Monwabisindlovu/portfolio-landing_page/main/images/nazalog.jpg"
+                src="/images/logo.jpg"
                 alt="Church Logo"
                 className="w-12 h-12 rounded-full object-cover border-2 border-amber-400"
               />

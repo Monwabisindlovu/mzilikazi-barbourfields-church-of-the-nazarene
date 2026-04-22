@@ -122,7 +122,7 @@ export default function UpcomingEvents() {
                   <div className="h-48 overflow-hidden relative">
                     <img
                       src={
-                        event.image_url ||
+                        event.image ||
                         'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600'
                       }
                       alt={event.title}
@@ -183,9 +183,9 @@ export default function UpcomingEvents() {
 
           {selectedEvent && (
             <div className="space-y-4">
-              {selectedEvent.image_url && (
+              {selectedevent.image && (
                 <img
-                  src={selectedEvent.image_url}
+                  src={selectedevent.image}
                   alt={selectedEvent.title}
                   className="w-full h-48 object-cover rounded-lg"
                 />

@@ -353,7 +353,7 @@ export default function EventsManager() {
                         : [update],
                 }))
               }
-              accept="image/*"
+              accept="image/*,video/*"
             />
 
             <div className="flex items-center gap-2">
