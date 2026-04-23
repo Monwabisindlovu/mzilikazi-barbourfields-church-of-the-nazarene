@@ -14,24 +14,23 @@ export default function Media() {
     queryKey: ['media'],
     queryFn: async () => {
       const res = await axiosClient.get('/media');
-      return res.data;
+
+      // ✅ Normalize for lightbox (minimal, clean)
+      return res.data.map(item => ({
+        id: item._id,
+        title: item.title,
+        description: item.description,
+        category: item.category,
+        media_type: item.media_type || item.type, // backend already sends media_type
+        file_url: item.url,
+      }));
     },
   });
 
-  // ✅ Normalize backend → frontend (IMPORTANT)
-  const normalizedMedia = mediaItems.map(item => ({
-    id: item._id,
-    title: item.title,
-    description: item.description,
-    media_type: item.media_type || item.type,
-    category: item.category,
-    file_url: item.url,
-  }));
-
-  const categories = ['all', ...new Set(normalizedMedia.map(m => m.category).filter(Boolean))];
+  const categories = ['all', ...new Set(mediaItems.map(m => m.category).filter(Boolean))];
 
   const filteredMedia =
-    filter === 'all' ? normalizedMedia : normalizedMedia.filter(m => m.category === filter);
+    filter === 'all' ? mediaItems : mediaItems.filter(m => m.category === filter);
 
   if (isLoading) {
     return (
@@ -113,7 +112,7 @@ export default function Media() {
         </div>
       </section>
 
-      {/* ✅ Lightbox (REPLACES Dialog completely) */}
+      {/* 🔥 Lightbox (replaces Dialog completely) */}
       {lightboxIndex !== null && (
         <MediaLightbox
           items={filteredMedia}
