@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { X, Image as ImageIcon, GripVertical, RefreshCw, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import axios from 'axios';
+import axiosClient from '@/api/client/axiosClient';
 
 export default function FileUploader({ value = [], onChange, accept = 'image/*' }) {
   const [uploads, setUploads] = useState([]);
@@ -36,7 +36,7 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
     return '';
   };
 
-  /* ================= HANDLE FILES ================= */
+  /* ================= UPLOAD ================= */
 
   const uploadSingleFile = async (file, id) => {
     const token = localStorage.getItem('token');
@@ -45,11 +45,16 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
       const formData = new FormData();
       formData.append('image', file);
 
-      const { data } = await axios.post('/api/uploads/image', formData, {
-        headers: { Authorization: `Bearer ${token}` },
+      const { data } = await axiosClient.post('/uploads/image', formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
         onUploadProgress: e => {
           const percent = Math.round((e.loaded * 100) / e.total);
-          setUploads(prev => prev.map(u => (u.id === id ? { ...u, progress: percent } : u)));
+          setUploads(prev =>
+            prev.map(u => (u.id === id ? { ...u, progress: percent } : u))
+          );
         },
       });
 
@@ -64,13 +69,19 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
     } catch (err) {
       console.error(err);
 
-      setUploads(prev => prev.map(u => (u.id === id ? { ...u, error: true } : u)));
+      setUploads(prev =>
+        prev.map(u => (u.id === id ? { ...u, error: true } : u))
+      );
 
-      setPreviews(prev => prev.map(p => (p.id === id ? { ...p, error: true } : p)));
+      setPreviews(prev =>
+        prev.map(p => (p.id === id ? { ...p, error: true } : p))
+      );
 
       toast.error(`Failed to upload ${file.name}`);
     }
   };
+
+  /* ================= HANDLE FILES ================= */
 
   const handleFiles = async filesInput => {
     const fileArray = Array.from(filesInput || []);
@@ -89,7 +100,6 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
       }
 
       const id = Date.now() + file.name;
-
       const previewUrl = URL.createObjectURL(file);
 
       setPreviews(prev => [...prev, { id, url: previewUrl, file }]);
@@ -103,9 +113,13 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
     const item = previews.find(p => p.id === id);
     if (!item?.file) return;
 
-    setUploads(prev => prev.map(u => (u.id === id ? { ...u, progress: 0, error: false } : u)));
+    setUploads(prev =>
+      prev.map(u => (u.id === id ? { ...u, progress: 0, error: false } : u))
+    );
 
-    setPreviews(prev => prev.map(p => (p.id === id ? { ...p, error: false } : p)));
+    setPreviews(prev =>
+      prev.map(p => (p.id === id ? { ...p, error: false } : p))
+    );
 
     uploadSingleFile(item.file, id);
   };
@@ -152,6 +166,7 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
 
   return (
     <div className="space-y-3">
+
       {/* Upload Area */}
       <div
         className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:border-amber-400"
@@ -172,19 +187,28 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
         />
 
         <ImageIcon className="w-8 h-8 text-slate-400 mb-2" />
-        <span className="text-sm text-slate-500">Drag & drop or click to upload</span>
+        <span className="text-sm text-slate-500">
+          Drag & drop or click to upload
+        </span>
       </div>
 
-      {isUploading && <p className="text-xs text-amber-600">Uploading... please wait</p>}
+      {isUploading && (
+        <p className="text-xs text-amber-600">
+          Uploading... please wait
+        </p>
+      )}
 
+      {/* PREVIEWS + FILES */}
       {(previews.length > 0 || files.length > 0) && (
         <div className="flex flex-wrap gap-2">
-          {/* PREVIEWS (Uploading / Failed) */}
+
+          {/* PREVIEWS */}
           {previews.map(p => {
             const upload = uploads.find(u => u.id === p.id);
 
             return (
               <div key={p.id} className="relative">
+
                 {isVideo(p) ? (
                   <div className="relative">
                     <video
@@ -195,7 +219,10 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
                     <Play className="absolute inset-0 m-auto text-white" size={18} />
                   </div>
                 ) : (
-                  <img src={p.url} className="w-24 h-20 object-cover rounded border opacity-70" />
+                  <img
+                    src={p.url}
+                    className="w-24 h-20 object-cover rounded border opacity-70"
+                  />
                 )}
 
                 {/* Progress */}
@@ -231,23 +258,29 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
                 onDrop={() => onDrop(index)}
                 className="relative group"
               >
+
                 {isVideo(item) ? (
                   <div className="relative">
-                    <video className="w-24 h-20 object-cover rounded border" src={src} muted />
+                    <video
+                      className="w-24 h-20 object-cover rounded border"
+                      src={src}
+                      muted
+                    />
                     <Play className="absolute inset-0 m-auto text-white" size={18} />
                   </div>
                 ) : (
-                  <img className="w-24 h-20 object-cover rounded border" src={src} />
+                  <img
+                    className="w-24 h-20 object-cover rounded border"
+                    src={src}
+                  />
                 )}
 
-                {/* MAIN */}
                 {index === 0 && (
                   <span className="absolute top-1 left-1 text-xs bg-black/70 text-white px-1 rounded">
                     Main
                   </span>
                 )}
 
-                {/* REMOVE */}
                 <Button
                   type="button"
                   size="icon"
@@ -258,7 +291,6 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
                   <X className="w-3 h-3" />
                 </Button>
 
-                {/* SET MAIN */}
                 <button
                   type="button"
                   onClick={() => setMainImage(index)}
@@ -271,6 +303,7 @@ export default function FileUploader({ value = [], onChange, accept = 'image/*' 
               </div>
             );
           })}
+
         </div>
       )}
     </div>
