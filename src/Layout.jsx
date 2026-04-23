@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Menu, X, Shield, Lock } from 'lucide-react';
 import { Button } from './components/ui/button';
+import { createPageUrl } from '@/utils';
 
 export default function Layout({ children }) {
   const { user } = useAuth();
@@ -14,34 +15,39 @@ export default function Layout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Handle scroll effect
+  /* ================= SCROLL ================= */
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on navigation
+  /* ================= CLOSE MOBILE MENU ================= */
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
-  // ✅ FIXED NAV LINKS (match your routes)
+  /* ================= NAV LINKS ================= */
   const navLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'About Us', path: '/about' },
-    { label: 'Mission', path: '/mission' },
-    { label: 'Vision', path: '/vision' },
-    { label: 'Leadership', path: '/leadership' },
-    { label: 'Media', path: '/media' },
-    { label: 'Events', path: '/events' },
-    { label: 'Contact Us', path: '/contact' },
-    { label: 'Partnership', path: '/partnership' },
+    { label: 'Home', path: 'Home' },
+    { label: 'About Us', path: 'AboutUs' },
+    { label: 'Mission', path: 'Mission' },
+    { label: 'Vision', path: 'Vision' },
+    { label: 'Leadership', path: 'Leadership' },
+    { label: 'Media', path: 'Media' },
+    { label: 'Events', path: 'UpcomingEvents' },
+    { label: 'Contact Us', path: 'ContactUs' },
+    { label: 'Partnership', path: 'Partnership' },
   ];
 
-  // ✅ Active link checker
-  const isActive = path => location.pathname === path;
+  /* ================= ACTIVE LINK ================= */
+  const isActive = path => {
+    const currentPath = location.pathname;
+    const targetPath = createPageUrl(path);
+    return currentPath === targetPath || currentPath === targetPath + '/';
+  };
 
+  /* ================= ADMIN HANDLER ================= */
   const handleAdminClick = () => {
     if (isAdmin) {
       navigate('/admin');
@@ -52,26 +58,24 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
+      {/* ================= HEADER ================= */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-lg' : 'bg-black/30 backdrop-blur-md'
+          isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
+            {/* LOGO */}
+            <Link to={createPageUrl('Home')} className="flex items-center gap-3">
               <img
-                src="/images/logo.jpg"
+                src="https://raw.githubusercontent.com/Monwabisindlovu/portfolio-landing_page/main/images/nazalog.jpg"
                 alt="Church Logo"
                 className="w-12 h-12 rounded-full object-cover border-2 border-amber-400"
               />
               <div className="hidden sm:block">
                 <h1
-                  className={`font-bold text-lg leading-tight ${
-                    isScrolled ? 'text-slate-900' : 'text-white'
-                  }`}
+                  className={`font-bold text-lg leading-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}
                 >
                   Mzilikazi Church
                 </h1>
@@ -81,12 +85,12 @@ export default function Layout({ children }) {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* DESKTOP NAV */}
             <nav className="hidden lg:flex items-center gap-1">
               {navLinks.map(link => (
                 <Link
                   key={link.path}
-                  to={link.path}
+                  to={createPageUrl(link.path)}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     isActive(link.path)
                       ? isScrolled
@@ -102,16 +106,17 @@ export default function Layout({ children }) {
               ))}
 
               {isAdmin && (
-                <button
+                <Button
+                  size="sm"
                   onClick={handleAdminClick}
-                  className="ml-2 px-3 py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors"
+                  className="ml-2 bg-amber-500 hover:bg-amber-600 text-slate-900"
                 >
-                  <Shield className="w-4 h-4" /> Admin
-                </button>
+                  <Shield className="w-4 h-4 mr-1" /> Admin
+                </Button>
               )}
             </nav>
 
-            {/* Mobile Menu Button */}
+            {/* MOBILE BUTTON */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`lg:hidden p-2 rounded-lg ${isScrolled ? 'text-slate-900' : 'text-white'}`}
@@ -121,90 +126,91 @@ export default function Layout({ children }) {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* ================= MOBILE DRAWER ================= */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t shadow-xl">
-            <nav className="max-w-7xl mx-auto px-4 py-4 space-y-1">
-              {navLinks.map(link => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    isActive(link.path)
-                      ? 'bg-amber-100 text-amber-700'
-                      : 'text-slate-600 hover:bg-slate-50'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+          <>
+            {/* BACKDROP */}
+            <div
+              className="lg:hidden fixed inset-0 z-40 bg-black/30"
+              onClick={() => setIsMenuOpen(false)}
+            />
 
-              {isAdmin && (
+            {/* DRAWER */}
+            <div
+              className="lg:hidden fixed top-0 right-0 h-full z-50 bg-white shadow-2xl border-l border-slate-100"
+              style={{ width: '30vw', minWidth: '160px', maxWidth: '240px' }}
+            >
+              {/* HEADER */}
+              <div className="flex items-center justify-between px-3 py-4 border-b border-slate-100">
+                <span className="text-[10px] font-black uppercase tracking-widest text-amber-500">
+                  Menu
+                </span>
                 <button
-                  onClick={handleAdminClick}
-                  className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium bg-amber-500 text-slate-900 flex items-center gap-2"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-700"
                 >
-                  <Shield className="w-4 h-4" /> Admin Dashboard
+                  <X className="w-4 h-4" />
                 </button>
-              )}
-            </nav>
-          </div>
+              </div>
+
+              {/* LINKS */}
+              <nav className="px-2 py-3 space-y-0.5 overflow-y-auto">
+                {navLinks.map(link => (
+                  <Link
+                    key={link.path}
+                    to={createPageUrl(link.path)}
+                    className={`block px-3 py-2 rounded-lg text-[11px] font-semibold transition-colors leading-tight ${
+                      isActive(link.path)
+                        ? 'bg-amber-100 text-amber-700'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-amber-600'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+
+                {isAdmin && (
+                  <button
+                    onClick={handleAdminClick}
+                    className="w-full text-left px-3 py-2 rounded-lg text-[11px] font-semibold bg-amber-500 text-slate-900 mt-2 flex items-center gap-1"
+                  >
+                    <Shield className="w-3 h-3" /> Admin
+                  </button>
+                )}
+              </nav>
+            </div>
+          </>
         )}
       </header>
 
-      {/* Main Content */}
+      {/* ================= MAIN ================= */}
       <main className="pt-20">{children}</main>
 
-      {/* Footer */}
+      {/* ================= FOOTER ================= */}
       <footer className="bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-4 py-16">
           <div className="grid md:grid-cols-4 gap-8">
-            {/* About */}
             <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <img
-                  src="https://raw.githubusercontent.com/Monwabisindlovu/portfolio-landing_page/main/images/nazalog.jpg"
-                  alt="Church Logo"
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <h3 className="font-bold text-lg">Mzilikazi Church of the Nazarene</h3>
-              </div>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                The Church of the Nazarene is a Protestant Christian church in the Wesleyan-Holiness
-                tradition.
+              <h3 className="font-bold text-lg mb-2">Mzilikazi Church of the Nazarene</h3>
+              <p className="text-slate-400 text-sm">
+                Wesleyan-Holiness tradition church serving the community.
               </p>
             </div>
 
-            {/* Quick Links */}
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-sm text-slate-400">
                 <li>
-                  <a
-                    href="https://www.nazarene.org/manual"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-amber-400"
-                  >
-                    Church Manual
-                  </a>
+                  <Link to={createPageUrl('ContactUs')}>Contact</Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-slate-400 hover:text-amber-400">
-                    Contact Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/partnership" className="text-slate-400 hover:text-amber-400">
-                    Partnership
-                  </Link>
+                  <Link to={createPageUrl('Partnership')}>Partnership</Link>
                 </li>
               </ul>
             </div>
 
-            {/* Address */}
             <div>
-              <h4 className="font-semibold mb-4">Church Address</h4>
+              <h4 className="font-semibold mb-4">Address</h4>
               <p className="text-slate-400 text-sm">
                 41396 Barbourfields
                 <br />
@@ -213,26 +219,12 @@ export default function Layout({ children }) {
             </div>
           </div>
 
-          {/* Footer Bottom */}
-          <div className="border-t border-slate-800 mt-12 pt-8 flex justify-between items-center">
-            <p className="text-sm text-slate-500">© {new Date().getFullYear()} Mzilikazi Church</p>
+          <div className="border-t border-slate-800 mt-10 pt-6 text-sm text-slate-500 flex justify-between">
+            <span>© {new Date().getFullYear()} Mzilikazi Church</span>
 
-            <button
-              type="button"
-              onClick={handleAdminClick}
-              className={`flex items-center gap-2 text-sm ${
-                isAdmin ? 'text-amber-500' : 'text-slate-500'
-              }`}
-            >
-              {isAdmin ? (
-                <>
-                  <Shield className="w-4 h-4" /> Admin
-                </>
-              ) : (
-                <>
-                  <Lock className="w-4 h-4" /> Admin Access
-                </>
-              )}
+            <button onClick={handleAdminClick} className="flex items-center gap-1">
+              {isAdmin ? <Shield className="w-4 h-4" /> : <Lock className="w-4 h-4" />}
+              Admin
             </button>
           </div>
         </div>
