@@ -4,10 +4,10 @@ import axiosClient from '@/api/client/axiosClient';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import MediaLightbox from '@/components/church/MediaLightbox';
 
 export default function Media() {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
   const [filter, setFilter] = useState('all');
 
   const { data: mediaItems = [], isLoading } = useQuery({
@@ -18,9 +18,20 @@ export default function Media() {
     },
   });
 
-  const categories = ['all', ...new Set(mediaItems.map(m => m.category).filter(Boolean))];
+  // ✅ Normalize backend → frontend (IMPORTANT)
+  const normalizedMedia = mediaItems.map(item => ({
+    id: item._id,
+    title: item.title,
+    description: item.description,
+    media_type: item.media_type || item.type,
+    category: item.category,
+    file_url: item.url,
+  }));
+
+  const categories = ['all', ...new Set(normalizedMedia.map(m => m.category).filter(Boolean))];
+
   const filteredMedia =
-    filter === 'all' ? mediaItems : mediaItems.filter(m => m.category === filter);
+    filter === 'all' ? normalizedMedia : normalizedMedia.filter(m => m.category === filter);
 
   if (isLoading) {
     return (
@@ -60,18 +71,18 @@ export default function Media() {
             <AnimatePresence mode="popLayout">
               {filteredMedia.map((item, i) => (
                 <motion.div
-                  key={item._id}
+                  key={item.id}
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ delay: i * 0.05 }}
                   className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group"
-                  onClick={() => setSelectedItem(item)}
+                  onClick={() => setLightboxIndex(i)}
                 >
-                  {item.type === 'video' ? (
+                  {item.media_type === 'video' ? (
                     <div className="w-full h-full bg-slate-900 flex items-center justify-center">
-                      <video src={item.url} className="w-full h-full object-cover" />
+                      <video src={item.file_url} className="w-full h-full object-cover" />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
                           <Play className="w-8 h-8 text-amber-600 ml-1" />
@@ -80,12 +91,13 @@ export default function Media() {
                     </div>
                   ) : (
                     <img
-                      src={item.url}
+                      src={item.file_url}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   )}
 
+                  {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                       <p className="text-white font-medium">{item.title}</p>
@@ -101,36 +113,15 @@ export default function Media() {
         </div>
       </section>
 
-      {/* Lightbox */}
-      <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
-        <DialogContent className="max-w-4xl p-0 bg-transparent border-0">
-          {selectedItem && (
-            <div className="relative">
-              {selectedItem.type === 'video' ? (
-                <video
-                  src={selectedItem.url}
-                  controls
-                  autoPlay
-                  className="w-full max-h-[80vh] rounded-lg"
-                />
-              ) : (
-                <img
-                  src={selectedItem.url}
-                  alt={selectedItem.title}
-                  className="w-full max-h-[80vh] object-contain rounded-lg"
-                />
-              )}
-
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
-                <h3 className="text-white text-xl font-bold">{selectedItem.title}</h3>
-                {selectedItem.description && (
-                  <p className="text-white/80 mt-2">{selectedItem.description}</p>
-                )}
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      {/* ✅ Lightbox (REPLACES Dialog completely) */}
+      {lightboxIndex !== null && (
+        <MediaLightbox
+          items={filteredMedia}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }
