@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
-import { Menu, X, Shield, Lock } from 'lucide-react';
+import { Menu, X, Shield } from 'lucide-react';
 import { Button } from './components/ui/button';
-// ❌ removed createPageUrl import (not needed)
 
 export default function Layout({ children }) {
   const { user } = useAuth();
@@ -12,22 +11,53 @@ export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  /* NEW hidden triple-click admin access */
+  const [adminTapCount, setAdminTapCount] = useState(0);
+
   const location = useLocation();
   const navigate = useNavigate();
 
+  const handleAdminClick = () => {
+    if (isAdmin) {
+      navigate('/admin');
+    } else {
+      navigate('/login');
+    }
+  };
+
   /* ================= SCROLL ================= */
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  /* ================= CLOSE MOBILE MENU ================= */
+  /* CLOSE MOBILE MENU ON ROUTE CHANGE */
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
-  /* ================= NAV LINKS ================= */
+  /* NEW triple-click hidden admin trigger */
+  useEffect(() => {
+    if (!adminTapCount) return;
+
+    if (adminTapCount >= 3) {
+      setAdminTapCount(0);
+      handleAdminClick();
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setAdminTapCount(0);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [adminTapCount]);
+
   const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'About Us', path: '/about' },
@@ -40,47 +70,59 @@ export default function Layout({ children }) {
     { label: 'Partnership', path: '/partnership' },
   ];
 
-  /* ================= ACTIVE LINK ================= */
   const isActive = path => {
     const currentPath = location.pathname;
     return currentPath === path || currentPath === path + '/';
-  };
-
-  /* ================= ADMIN HANDLER ================= */
-  const handleAdminClick = () => {
-    if (isAdmin) {
-      navigate('/admin');
-    } else {
-      navigate('/login');
-    }
   };
 
   return (
     <div className="min-h-screen bg-white">
       {/* ================= HEADER ================= */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
-        }`}
+        className={`
+          fixed top-0 left-0 right-0 z-50
+          transition-all duration-300
+          ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-black/25 backdrop-blur-sm'}
+        `}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* LOGO */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3 min-w-0">
               <img
-                src="https://raw.githubusercontent.com/Monwabisindlovu/portfolio-landing_page/main/images/nazalog.jpg"
+                src="/images/logo.jpg"
                 alt="Church Logo"
-                className="w-12 h-12 rounded-full object-cover border-2 border-amber-400"
+                className="
+                  w-10 h-10
+                  sm:w-12 sm:h-12
+                  rounded-full
+                  object-cover
+                  border-2 border-amber-400
+                  shrink-0
+                "
               />
-              <div className="hidden sm:block">
+
+              <div className="leading-tight min-w-0">
                 <h1
-                  className={`font-bold text-lg leading-tight ${
-                    isScrolled ? 'text-slate-900' : 'text-white'
-                  }`}
+                  className={`
+                    font-bold
+                    text-[13px]
+                    sm:text-lg
+                    truncate
+                    ${isScrolled ? 'text-slate-900' : 'text-white'}
+                  `}
                 >
                   Mzilikazi Church
                 </h1>
-                <p className={`text-xs ${isScrolled ? 'text-amber-600' : 'text-amber-300'}`}>
+
+                <p
+                  className={`
+                    text-[10px]
+                    sm:text-xs
+                    truncate
+                    ${isScrolled ? 'text-amber-600' : 'text-amber-300'}
+                  `}
+                >
                   of the Nazarene
                 </p>
               </div>
@@ -92,132 +134,168 @@ export default function Layout({ children }) {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    isActive(link.path)
-                      ? isScrolled
-                        ? 'bg-amber-100 text-amber-700'
-                        : 'bg-white/20 text-white'
-                      : isScrolled
-                        ? 'text-slate-600 hover:text-amber-600 hover:bg-amber-50'
-                        : 'text-white/80 hover:text-white hover:bg-white/10'
-                  }`}
+                  className={`
+                    px-3 py-2 rounded-xl text-sm font-medium transition-all
+                    ${
+                      isActive(link.path)
+                        ? isScrolled
+                          ? 'bg-amber-100 text-amber-700'
+                          : 'bg-white/20 text-white'
+                        : isScrolled
+                          ? 'text-slate-700 hover:bg-amber-50 hover:text-amber-600'
+                          : 'text-white/90 hover:bg-white/10 hover:text-white'
+                    }
+                  `}
                 >
                   {link.label}
                 </Link>
               ))}
 
               {isAdmin && (
-                <Button
-                  size="sm"
+                <button
                   onClick={handleAdminClick}
-                  className="ml-2 bg-amber-500 hover:bg-amber-600 text-slate-900"
+                  className="ml-2 px-3 py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 rounded-xl text-sm font-medium flex items-center gap-1"
                 >
-                  <Shield className="w-4 h-4 mr-1" /> Admin
-                </Button>
+                  <Shield className="w-4 h-4" />
+                  Admin
+                </button>
               )}
             </nav>
 
-            {/* MOBILE BUTTON */}
+            {/* MOBILE TOGGLE */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden p-2 rounded-lg ${isScrolled ? 'text-slate-900' : 'text-white'}`}
+              className={`
+                lg:hidden p-2 rounded-xl transition
+                ${isScrolled ? 'text-slate-900 hover:bg-slate-100' : 'text-white hover:bg-white/10'}
+              `}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* ================= MOBILE DRAWER ================= */}
+        {/* MOBILE MENU */}
         {isMenuOpen && (
           <>
             <div
-              className="lg:hidden fixed inset-0 z-40 bg-black/40"
               onClick={() => setIsMenuOpen(false)}
+              className="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-[2px] z-40"
             />
 
-            <div
-              className={`lg:hidden fixed top-0 right-0 h-full z-50 bg-white shadow-2xl border-l border-slate-100 transform transition-transform duration-300 ease-in-out ${
-                isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-              }`}
-              style={{
-                width: '30vw',
-                minWidth: '160px',
-                maxWidth: '240px',
-              }}
-            >
-              <div className="flex items-center justify-between px-3 py-4 border-b border-slate-100">
-                <span className="text-[10px] font-black uppercase tracking-widest text-amber-500">
-                  Menu
-                </span>
+            <div className="lg:hidden fixed top-24 right-4 z-50">
+              <div
+                className="
+                  w-[250px]
+                  rounded-3xl
+                  border border-white/30
+                  bg-white/70
+                  backdrop-blur-2xl
+                  shadow-2xl
+                  overflow-hidden
+                "
+              >
+                <div className="flex items-center justify-between px-4 py-3 border-b border-white/40">
+                  <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-amber-600">
+                    Menu
+                  </span>
 
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="p-1 rounded-lg text-slate-400 hover:text-slate-700"
-                >
-                  <X className="w-4 h-4" />
-                </button>
+                  <button
+                    onClick={() => setIsMenuOpen(false)}
+                    className="p-1 rounded-lg hover:bg-white/50 text-slate-500"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <nav className="p-3 space-y-1">
+                  {navLinks.map(link => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`
+                        block px-4 py-3 rounded-2xl text-[13px] font-semibold
+                        ${
+                          isActive(link.path)
+                            ? 'bg-amber-100 text-amber-700'
+                            : 'text-slate-700 hover:bg-white/60 hover:text-amber-600'
+                        }
+                      `}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+
+                  {isAdmin && (
+                    <button
+                      onClick={handleAdminClick}
+                      className="
+                        mt-2 w-full px-4 py-3 rounded-2xl
+                        bg-amber-500 hover:bg-amber-600
+                        text-slate-900 font-semibold
+                        flex items-center gap-2
+                      "
+                    >
+                      <Shield className="w-4 h-4" />
+                      Admin Dashboard
+                    </button>
+                  )}
+                </nav>
               </div>
-
-              <nav className="px-2 py-3 space-y-1 overflow-y-auto">
-                {navLinks.map(link => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-lg text-[11px] font-semibold transition-colors leading-tight ${
-                      isActive(link.path)
-                        ? 'bg-amber-100 text-amber-700'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-amber-600'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-
-                {isAdmin && (
-                  <Link
-                    to="/admin"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block px-3 py-2 rounded-lg text-[11px] font-semibold bg-amber-500 text-slate-900 mt-2"
-                  >
-                    <Shield className="w-3 h-3 inline mr-1" />
-                    Admin
-                  </Link>
-                )}
-              </nav>
             </div>
           </>
         )}
       </header>
 
-      {/* ================= MAIN ================= */}
+      {/* MAIN */}
       <main className="pt-20">{children}</main>
 
       {/* ================= FOOTER ================= */}
       <footer className="bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <h3 className="font-bold text-lg mb-2">Mzilikazi Church of the Nazarene</h3>
-              <p className="text-slate-400 text-sm">
-                Wesleyan-Holiness tradition church serving the community.
+          <div className="grid md:grid-cols-3 gap-10">
+            <div>
+              <h4 className="font-semibold mb-4">About</h4>
+
+              <p className="text-slate-400 text-sm leading-relaxed">
+                The Church of the Nazarene is a Protestant Christian church in the Wesleyan-Holiness
+                tradition serving the community through faith, discipleship and mission.
               </p>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-slate-400">
+
+              <ul className="space-y-2 text-sm">
                 <li>
-                  <Link to="/contact">Contact</Link>
+                  <a
+                    href="https://www.nazarene.org/manual"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-amber-400"
+                  >
+                    Church Manual
+                  </a>
                 </li>
+
                 <li>
-                  <Link to="/partnership">Partnership</Link>
+                  <Link to="/contact" className="text-slate-400 hover:text-amber-400">
+                    Contact Us
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/partnership" className="text-slate-400 hover:text-amber-400">
+                    Partnership
+                  </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Address</h4>
+              <h4 className="font-semibold mb-4">Church Address</h4>
+
               <p className="text-slate-400 text-sm">
                 41396 Barbourfields
                 <br />
@@ -226,12 +304,22 @@ export default function Layout({ children }) {
             </div>
           </div>
 
-          <div className="border-t border-slate-800 mt-10 pt-6 text-sm text-slate-500 flex justify-between">
-            <span>© {new Date().getFullYear()} Mzilikazi Church</span>
-
-            <button onClick={handleAdminClick} className="flex items-center gap-1">
-              {isAdmin ? <Shield className="w-4 h-4" /> : <Lock className="w-4 h-4" />}
-              Admin
+          {/* Hidden Triple Click Admin */}
+          <div className="border-t border-slate-800 mt-12 pt-8 flex justify-center">
+            <button
+              onClick={() => setAdminTapCount(prev => prev + 1)}
+              className="
+                text-sm
+                text-slate-500
+                hover:text-slate-400
+                transition-colors
+                tracking-wide
+                select-none
+                cursor-pointer
+              "
+              aria-label="Church Copyright"
+            >
+              © {new Date().getFullYear()} Mzilikazi Church
             </button>
           </div>
         </div>
