@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Menu, X, Shield, Lock } from 'lucide-react';
 import { Button } from './components/ui/button';
-import { createPageUrl } from '@/utils';
+// ❌ removed createPageUrl import (not needed)
 
 export default function Layout({ children }) {
   const { user } = useAuth();
@@ -29,22 +29,21 @@ export default function Layout({ children }) {
 
   /* ================= NAV LINKS ================= */
   const navLinks = [
-    { label: 'Home', path: 'Home' },
-    { label: 'About Us', path: 'AboutUs' },
-    { label: 'Mission', path: 'Mission' },
-    { label: 'Vision', path: 'Vision' },
-    { label: 'Leadership', path: 'Leadership' },
-    { label: 'Media', path: 'Media' },
-    { label: 'Events', path: 'UpcomingEvents' },
-    { label: 'Contact Us', path: 'ContactUs' },
-    { label: 'Partnership', path: 'Partnership' },
+    { label: 'Home', path: '/' },
+    { label: 'About Us', path: '/about' },
+    { label: 'Mission', path: '/mission' },
+    { label: 'Vision', path: '/vision' },
+    { label: 'Leadership', path: '/leadership' },
+    { label: 'Media', path: '/media' },
+    { label: 'Events', path: '/events' },
+    { label: 'Contact Us', path: '/contact' },
+    { label: 'Partnership', path: '/partnership' },
   ];
 
   /* ================= ACTIVE LINK ================= */
   const isActive = path => {
     const currentPath = location.pathname;
-    const targetPath = createPageUrl(path);
-    return currentPath === targetPath || currentPath === targetPath + '/';
+    return currentPath === path || currentPath === path + '/';
   };
 
   /* ================= ADMIN HANDLER ================= */
@@ -67,7 +66,7 @@ export default function Layout({ children }) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* LOGO */}
-            <Link to={createPageUrl('Home')} className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <img
                 src="https://raw.githubusercontent.com/Monwabisindlovu/portfolio-landing_page/main/images/nazalog.jpg"
                 alt="Church Logo"
@@ -75,7 +74,9 @@ export default function Layout({ children }) {
               />
               <div className="hidden sm:block">
                 <h1
-                  className={`font-bold text-lg leading-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}
+                  className={`font-bold text-lg leading-tight ${
+                    isScrolled ? 'text-slate-900' : 'text-white'
+                  }`}
                 >
                   Mzilikazi Church
                 </h1>
@@ -90,7 +91,7 @@ export default function Layout({ children }) {
               {navLinks.map(link => (
                 <Link
                   key={link.path}
-                  to={createPageUrl(link.path)}
+                  to={link.path}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     isActive(link.path)
                       ? isScrolled
@@ -129,15 +130,11 @@ export default function Layout({ children }) {
         {/* ================= MOBILE DRAWER ================= */}
         {isMenuOpen && (
           <>
-            {/* Backdrop */}
-            {isMenuOpen && (
-              <div
-                className="lg:hidden fixed inset-0 z-40 bg-black/40"
-                onClick={() => setIsMenuOpen(false)}
-              />
-            )}
+            <div
+              className="lg:hidden fixed inset-0 z-40 bg-black/40"
+              onClick={() => setIsMenuOpen(false)}
+            />
 
-            {/* Drawer */}
             <div
               className={`lg:hidden fixed top-0 right-0 h-full z-50 bg-white shadow-2xl border-l border-slate-100 transform transition-transform duration-300 ease-in-out ${
                 isMenuOpen ? 'translate-x-0' : 'translate-x-full'
@@ -148,7 +145,6 @@ export default function Layout({ children }) {
                 maxWidth: '240px',
               }}
             >
-              {/* Header */}
               <div className="flex items-center justify-between px-3 py-4 border-b border-slate-100">
                 <span className="text-[10px] font-black uppercase tracking-widest text-amber-500">
                   Menu
@@ -162,12 +158,11 @@ export default function Layout({ children }) {
                 </button>
               </div>
 
-              {/* Links */}
               <nav className="px-2 py-3 space-y-1 overflow-y-auto">
                 {navLinks.map(link => (
                   <Link
                     key={link.path}
-                    to={createPageUrl(link.path)}
+                    to={link.path}
                     onClick={() => setIsMenuOpen(false)}
                     className={`block px-3 py-2 rounded-lg text-[11px] font-semibold transition-colors leading-tight ${
                       isActive(link.path)
@@ -181,7 +176,7 @@ export default function Layout({ children }) {
 
                 {isAdmin && (
                   <Link
-                    to={createPageUrl('Admin')}
+                    to="/admin"
                     onClick={() => setIsMenuOpen(false)}
                     className="block px-3 py-2 rounded-lg text-[11px] font-semibold bg-amber-500 text-slate-900 mt-2"
                   >
@@ -213,10 +208,10 @@ export default function Layout({ children }) {
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm text-slate-400">
                 <li>
-                  <Link to={createPageUrl('ContactUs')}>Contact</Link>
+                  <Link to="/contact">Contact</Link>
                 </li>
                 <li>
-                  <Link to={createPageUrl('Partnership')}>Partnership</Link>
+                  <Link to="/partnership">Partnership</Link>
                 </li>
               </ul>
             </div>

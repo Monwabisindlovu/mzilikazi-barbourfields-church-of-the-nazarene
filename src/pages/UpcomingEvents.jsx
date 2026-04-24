@@ -183,9 +183,9 @@ export default function UpcomingEvents() {
 
           {selectedEvent && (
             <div className="space-y-4">
-              {selectedevent.image && (
+              {selectedEvent?.image && (
                 <img
-                  src={selectedevent.image}
+                  src={selectedEvent.image}
                   alt={selectedEvent.title}
                   className="w-full h-48 object-cover rounded-lg"
                 />
