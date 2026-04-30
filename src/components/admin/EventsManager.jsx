@@ -267,12 +267,17 @@ export default function EventsManager() {
 
       {/* MODAL */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent>
-          <DialogHeader>
+        <DialogContent className="max-h-[90vh] flex flex-col overflow-hidden">
+          <DialogHeader className="shrink-0">
             <DialogTitle>{editingItem ? 'Edit Event' : 'Add Event'}</DialogTitle>
           </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {/* SCROLLABLE FORM AREA */}
+          <form
+            id="event-form"
+            onSubmit={handleSubmit}
+            className="flex-1 overflow-y-auto space-y-4 pr-2"
+          >
             <Input
               placeholder="Title"
               value={formData.title}
@@ -334,12 +339,11 @@ export default function EventsManager() {
             </div>
 
             <Input
-              placeholder="Category (e.g. Music, Sports)"
+              placeholder="Category"
               value={formData.category}
               onChange={e => setFormData({ ...formData, category: e.target.value })}
             />
 
-            {/* ✅ SAME LOGIC AS ANNOUNCEMENTS */}
             <FileUploader
               value={formData.files}
               onChange={update =>
@@ -356,21 +360,24 @@ export default function EventsManager() {
               accept="image/*,video/*"
             />
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 pb-2">
               <Switch
                 checked={formData.is_featured}
                 onCheckedChange={v => setFormData({ ...formData, is_featured: v })}
               />
               Featured
             </div>
-
-            <DialogFooter>
-              <Button type="button" onClick={handleClose}>
-                Cancel
-              </Button>
-              <Button type="submit">{editingItem ? 'Update' : 'Create'}</Button>
-            </DialogFooter>
           </form>
+
+          {/* FOOTER ALWAYS VISIBLE */}
+          <DialogFooter className="shrink-0 border-t pt-3 bg-white">
+            <Button type="button" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button type="submit" form="event-form">
+              {editingItem ? 'Update' : 'Create'}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>

@@ -250,12 +250,17 @@ export default function AnnouncementsManager() {
 
       {/* MODAL */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent>
-          <DialogHeader>
+        <DialogContent className="max-h-[90vh] flex flex-col overflow-hidden">
+          <DialogHeader className="shrink-0">
             <DialogTitle>{editingItem ? 'Edit' : 'Add'} Announcement</DialogTitle>
           </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {/* SCROLLABLE CONTENT AREA */}
+          <form
+            id="announcement-form"
+            onSubmit={handleSubmit}
+            className="flex-1 overflow-y-auto space-y-4 pr-2"
+          >
             <Input
               placeholder="Title"
               value={formData.title}
@@ -311,25 +316,31 @@ export default function AnnouncementsManager() {
               type="number"
               value={formData.display_order}
               onChange={e =>
-                setFormData({ ...formData, display_order: parseInt(e.target.value) || 0 })
+                setFormData({
+                  ...formData,
+                  display_order: parseInt(e.target.value) || 0,
+                })
               }
             />
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 pb-2">
               <Switch
                 checked={formData.is_active}
                 onCheckedChange={v => setFormData({ ...formData, is_active: v })}
               />
               Active
             </div>
-
-            <DialogFooter>
-              <Button type="button" onClick={handleClose}>
-                Cancel
-              </Button>
-              <Button type="submit">{editingItem ? 'Update' : 'Create'}</Button>
-            </DialogFooter>
           </form>
+
+          {/* FIXED FOOTER (always visible) */}
+          <DialogFooter className="shrink-0 border-t pt-3 bg-white">
+            <Button type="button" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button type="submit" form="announcement-form">
+              {editingItem ? 'Update' : 'Create'}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>

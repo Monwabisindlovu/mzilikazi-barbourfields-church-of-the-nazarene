@@ -145,7 +145,7 @@ export default function MediaManager() {
       description: formData.description,
       category: formData.category,
       is_featured: formData.is_featured,
-      type: 'image',
+      type: finalUrl?.match(/\.(mp4|webm|ogg)$/i) ? 'video' : 'image',
       url: finalUrl,
     };
 
@@ -221,15 +221,18 @@ export default function MediaManager() {
                     className="absolute top-2 left-2 z-10"
                   />
 
-                  {/* 🔥 SAFE IMAGE */}
-                  {item.url && (
-                    <img
-                      src={item.url}
-                      alt={item.title || 'media'}
-                      className="w-full h-full object-cover"
-                      onError={e => (e.target.style.display = 'none')}
-                    />
-                  )}
+                  {/* 🔥 SAFE MEDIA RENDER */}
+                  {item.url &&
+                    (item.media_type === 'video' ? (
+                      <video src={item.url} className="w-full h-full object-cover" controls />
+                    ) : (
+                      <img
+                        src={item.url}
+                        alt={item.title || 'media'}
+                        className="w-full h-full object-cover"
+                        onError={e => (e.target.style.display = 'none')}
+                      />
+                    ))}
 
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex justify-center items-center gap-2">
                     <Button size="icon" onClick={() => handleOpen(item)}>

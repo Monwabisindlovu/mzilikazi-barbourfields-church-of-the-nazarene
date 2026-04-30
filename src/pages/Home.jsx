@@ -63,6 +63,15 @@ export default function Home() {
       return streams[0] || null;
     },
   });
+  const { data: leaders = [] } = useQuery({
+    queryKey: ['leaders'],
+    queryFn: async () => {
+      const res = await axiosClient.get('/leaders');
+      return res.data;
+    },
+  });
+
+  const pastor = [...leaders].sort((a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999))[0];
 
   return (
     <div className="min-h-screen bg-white">
@@ -182,7 +191,7 @@ export default function Home() {
 
       {/* ─── SERVICES + PASTOR ─── */}
       <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left: Pastor card — modern asymmetric design */}
             <motion.div
@@ -192,24 +201,36 @@ export default function Home() {
               transition={{ duration: 0.7 }}
               className="flex justify-center"
             >
-              <div className="relative w-full max-w-sm mx-auto">
+              <div className="relative w-full max-w-sm mx-auto px-2 sm:px-0">
                 <div className="overflow-hidden rounded-3xl shadow-2xl">
-                  <img
-                    src="/images/pastor.jpg"
-                    alt="Pastor Rev I. Msipha"
-                    className="w-full aspect-[4/5] object-cover object-center"
-                  />
+                  {pastor?.photo ? (
+                    <img
+                      src={pastor.photo}
+                      alt={pastor.name}
+                      className="w-full aspect-[4/5] object-cover object-center"
+                    />
+                  ) : (
+                    <div className="w-full aspect-[4/5] flex items-center justify-center bg-slate-200">
+                      No Pastor Image
+                    </div>
+                  )}
                 </div>
 
                 {/* Glass info card */}
                 <div className="mt-4 bg-white/70 backdrop-blur-md border border-white/40 rounded-2xl p-4 shadow-lg">
                   <p className="text-amber-500 text-xs font-bold uppercase tracking-widest mb-1">
-                    Senior Pastor
+                    {pastor?.title || 'Senior Pastor'}
                   </p>
+
                   <h3 className="text-lg font-black text-slate-900 leading-tight">
-                    Pastor Rev I. Msipha
+                    {pastor?.name || 'Pastor'}
                   </h3>
-                  <p className="text-slate-500 text-xs italic mt-1">"A bond-servant of the Lord"</p>
+
+                  <p className="text-slate-500 text-xs italic mt-1">
+                    {pastor?.bio
+                      ? `"${pastor.bio.slice(0, 80)}${pastor.bio.length > 80 ? '...' : ''}"`
+                      : '"A bond-servant of the Lord"'}
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -242,7 +263,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className={`flex items-center gap-5 p-5 rounded-2xl border-2 ${s.accent} transition-all hover:shadow-md`}
+                    className={`flex items-center gap-4 p-4 sm:p-5 rounded-2xl border-2 ${s.accent} transition-all hover:shadow-md`}
                   >
                     <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-2xl shadow-sm flex-shrink-0">
                       {s.icon}

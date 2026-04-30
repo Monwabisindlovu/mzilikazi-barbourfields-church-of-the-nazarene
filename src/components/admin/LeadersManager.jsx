@@ -88,9 +88,9 @@ export default function LeadersManager() {
       setEditingItem(item);
       setFormData({
         name: item.name || '',
-        role: item.title || '', // ✅ map title → role
+        role: item.title || '',
         bio: item.bio || '',
-        is_pastor: false,
+        is_pastor: item?.is_pastor || false,
         display_order: item.displayOrder || 0,
         files: item.photo ? [item.photo] : [],
       });
@@ -100,8 +100,8 @@ export default function LeadersManager() {
         name: '',
         role: '',
         bio: '',
-        is_pastor: false,
-        display_order: 0,
+        is_pastor: item?.is_pastor || false,
+        display_order: leaders.length === 0 ? 0 : leaders.length,
         files: [],
       });
     }
@@ -131,19 +131,20 @@ export default function LeadersManager() {
     const form = new FormData();
 
     form.append('name', formData.name);
-    form.append('title', formData.role); // ✅ FIX
-    form.append('ministry', formData.role); // ✅ REQUIRED by backend
+    form.append('title', formData.role);
+    form.append('ministry', formData.role);
     form.append('bio', formData.bio || '');
     form.append('displayOrder', formData.display_order || 0);
 
     if (filesArray.length > 0) {
       const first = filesArray[0];
 
-      if (typeof first === 'string') {
+      if (first instanceof File) {
+        form.append('photo', first);
+      } else if (typeof first === 'string') {
         form.append('photo', first);
       }
     }
-
     if (editingItem) {
       updateMutation.mutate({
         id: editingItem._id,
@@ -262,16 +263,25 @@ export default function LeadersManager() {
               accept="image/*,video/*"
             />
 
-            <Input
-              type="number"
-              value={formData.display_order}
-              onChange={e =>
-                setFormData({
-                  ...formData,
-                  display_order: parseInt(e.target.value) || 0,
-                })
-              }
-            />
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Display Order</label>
+
+              <Input
+                type="number"
+                min="0"
+                value={formData.display_order}
+                onChange={e =>
+                  setFormData({
+                    ...formData,
+                    display_order: parseInt(e.target.value) || 0,
+                  })
+                }
+              />
+
+              <p className="text-xs text-slate-500">
+                Use 0 for Senior Pastor. Higher numbers appear under Church Leadership.
+              </p>
+            </div>
 
             <DialogFooter>
               <Button type="button" variant="outline" onClick={handleClose}>

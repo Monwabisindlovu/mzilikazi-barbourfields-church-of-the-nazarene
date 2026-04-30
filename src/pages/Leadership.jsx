@@ -14,11 +14,10 @@ export default function Leadership() {
       return res.data;
     },
   });
+  const sortedLeaders = [...leaders].sort((a, b) => a.displayOrder - b.displayOrder);
 
-  const pastor = leaders.find(l => l.is_pastor);
-  const otherLeaders = leaders.filter(l => !l.is_pastor);
-
-  const displayLeaders = otherLeaders;
+  const pastor = sortedLeaders[0];
+  const otherLeaders = sortedLeaders.slice(1);
 
   // initials helper
   const getInitials = name => {
@@ -86,7 +85,7 @@ export default function Leadership() {
           <h2 className="text-center text-3xl font-bold mb-12">Church Leadership</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {displayLeaders.map(leader => (
+            {otherLeaders.map(leader => (
               <motion.div
                 key={leader._id}
                 whileHover={{ scale: 1.03 }}

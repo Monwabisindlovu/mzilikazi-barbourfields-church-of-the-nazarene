@@ -11,8 +11,10 @@ import {
   MessageSquare,
   Shield,
   LogOut,
+  Home,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 import EventsManager from '@/components/admin/EventsManager';
 import MediaManager from '@/components/admin/MediaManager';
 import AnnouncementsManager from '@/components/admin/AnnouncementsManager';
@@ -24,7 +26,7 @@ export default function Admin() {
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoadingAuth, logout } = useAuth();
 
-  // Show loading while auth is being checked
+  /* ================= LOADING ================= */
   if (isLoadingAuth) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
@@ -36,16 +38,16 @@ export default function Admin() {
     );
   }
 
-  // ✅ REDIRECT TO LOGIN IF NOT AUTHENTICATED
+  /* ================= AUTH GUARDS ================= */
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  // ✅ REDIRECT TO HOME IF NOT ADMIN
   if (user?.role !== 'admin' && user?.role !== 'super_admin') {
     return <Navigate to="/" replace />;
   }
 
+  /* ================= LOGOUT ================= */
   const handleLogout = async () => {
     try {
       await logout();
@@ -55,6 +57,7 @@ export default function Admin() {
     navigate('/login', { replace: true });
   };
 
+  /* ================= TABS ================= */
   const tabs = [
     { id: 'events', label: 'Events', icon: Calendar, component: EventsManager },
     { id: 'media', label: 'Media', icon: Image, component: MediaManager },
@@ -72,34 +75,56 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-slate-50 pt-24">
       <div className="max-w-7xl mx-auto px-4 pb-12">
-        {/* Header */}
+        {/* ================= HEADER ================= */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
             <div className="flex items-center gap-2 text-amber-600 mb-1">
               <Shield className="w-5 h-5" />
               <span className="text-sm font-medium">Admin Dashboard</span>
             </div>
+
             <h1 className="text-2xl md:text-3xl font-bold text-slate-900">Church Management</h1>
+
             <p className="text-slate-600 mt-1">Welcome back, {user?.name || user?.email}</p>
           </div>
 
-          <Button variant="outline" onClick={handleLogout}>
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </Button>
+          {/* ACTIONS */}
+          <div className="flex items-center gap-2">
+            {/* VIEW SITE */}
+            <Button variant="outline" onClick={() => navigate('/')}>
+              <Home className="w-4 h-4 mr-2" />
+              View Site
+            </Button>
+
+            {/* LOGOUT */}
+            <Button variant="outline" onClick={handleLogout}>
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
+            </Button>
+          </div>
         </div>
 
-        {/* Tabs */}
+        {/* ================= TABS ================= */}
         <Tabs defaultValue="events" className="space-y-6">
-          <TabsList className="bg-white p-1 rounded-xl shadow-sm flex-wrap h-auto gap-1">
+          <TabsList
+            className="
+            bg-white p-1 rounded-xl shadow-sm
+            flex gap-1 overflow-x-auto whitespace-nowrap
+            scrollbar-hide
+          "
+          >
             {tabs.map(tab => (
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="data-[state=active]:bg-amber-500 data-[state=active]:text-slate-900 rounded-lg px-4 py-2"
+                className="
+                  flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap
+                  data-[state=active]:bg-amber-500
+                  data-[state=active]:text-slate-900
+                "
               >
-                <tab.icon className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline">{tab.label}</span>
+                <tab.icon className="w-4 h-4 shrink-0" />
+                <span className="text-sm">{tab.label}</span>
               </TabsTrigger>
             ))}
           </TabsList>
